@@ -1,0 +1,38 @@
+# Build artifacts
+*.o
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# Build output (keep original/build/ checked in as reference)
+build/
+
+# Ghidra project databases
+*.rep/
+*.lock
+*.lock~
+
+# IDE
+.vs/
+.vscode/
+*.sln
+*.suo
+*.user
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Large decompiled output (tracked via Git LFS or excluded)
+# analysis/ghidra/decompiled_functions.c
+*.tmp
+ENGINEER.md
+/.claude
+*.dcr
+*.dll
+*.py
+*.stackdump

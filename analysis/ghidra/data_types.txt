@@ -1,0 +1,832 @@
+// Data types recovered from dirapi.dll
+
+struct __tagBRECORD { // size: 0x8
+    PVOID pvRecord; // offset 0x0
+    IRecordInfo * pRecInfo; // offset 0x4
+};
+
+struct __tagVARIANT { // size: 0x10
+    VARTYPE vt; // offset 0x0
+    WORD wReserved1; // offset 0x2
+    WORD wReserved2; // offset 0x4
+    WORD wReserved3; // offset 0x6
+    _union_2685 n3; // offset 0x8
+};
+typedef longlong __time64_t;
+
+struct _CONTEXT { // size: 0x2cc
+    DWORD ContextFlags; // offset 0x0
+    DWORD Dr0; // offset 0x4
+    DWORD Dr1; // offset 0x8
+    DWORD Dr2; // offset 0xc
+    DWORD Dr3; // offset 0x10
+    DWORD Dr6; // offset 0x14
+    DWORD Dr7; // offset 0x18
+    FLOATING_SAVE_AREA FloatSave; // offset 0x1c
+    DWORD SegGs; // offset 0x8c
+    DWORD SegFs; // offset 0x90
+    DWORD SegEs; // offset 0x94
+    DWORD SegDs; // offset 0x98
+    DWORD Edi; // offset 0x9c
+    DWORD Esi; // offset 0xa0
+    DWORD Ebx; // offset 0xa4
+    DWORD Edx; // offset 0xa8
+    DWORD Ecx; // offset 0xac
+    DWORD Eax; // offset 0xb0
+    DWORD Ebp; // offset 0xb4
+    DWORD Eip; // offset 0xb8
+    DWORD SegCs; // offset 0xbc
+    DWORD EFlags; // offset 0xc0
+    DWORD Esp; // offset 0xc4
+    DWORD SegSs; // offset 0xc8
+    BYTE[512] ExtendedRegisters; // offset 0xcc
+};
+
+struct _EXCEPTION_POINTERS { // size: 0x8
+    PEXCEPTION_RECORD ExceptionRecord; // offset 0x0
+    PCONTEXT ContextRecord; // offset 0x4
+};
+
+struct _EXCEPTION_RECORD { // size: 0x50
+    DWORD ExceptionCode; // offset 0x0
+    DWORD ExceptionFlags; // offset 0x4
+    _EXCEPTION_RECORD * ExceptionRecord; // offset 0x8
+    PVOID ExceptionAddress; // offset 0xc
+    DWORD NumberParameters; // offset 0x10
+    ULONG_PTR[15] ExceptionInformation; // offset 0x14
+};
+
+struct _FILETIME { // size: 0x8
+    DWORD dwLowDateTime; // offset 0x0
+    DWORD dwHighDateTime; // offset 0x4
+};
+
+struct _FLOATING_SAVE_AREA { // size: 0x70
+    DWORD ControlWord; // offset 0x0
+    DWORD StatusWord; // offset 0x4
+    DWORD TagWord; // offset 0x8
+    DWORD ErrorOffset; // offset 0xc
+    DWORD ErrorSelector; // offset 0x10
+    DWORD DataOffset; // offset 0x14
+    DWORD DataSelector; // offset 0x18
+    BYTE[80] RegisterArea; // offset 0x1c
+    DWORD Cr0NpxState; // offset 0x6c
+};
+
+struct _GUID { // size: 0x10
+    ulong Data1; // offset 0x0
+    ushort Data2; // offset 0x4
+    ushort Data3; // offset 0x6
+    uchar[8] Data4; // offset 0x8
+};
+
+struct _IMAGE_SECTION_HEADER { // size: 0x28
+    BYTE[8] Name; // offset 0x0
+    _union_226 Misc; // offset 0x8
+    DWORD VirtualAddress; // offset 0xc
+    DWORD SizeOfRawData; // offset 0x10
+    DWORD PointerToRawData; // offset 0x14
+    DWORD PointerToRelocations; // offset 0x18
+    DWORD PointerToLinenumbers; // offset 0x1c
+    WORD NumberOfRelocations; // offset 0x20
+    WORD NumberOfLinenumbers; // offset 0x22
+    DWORD Characteristics; // offset 0x24
+};
+
+struct _iobuf { // size: 0x20
+    char * _ptr; // offset 0x0
+    int _cnt; // offset 0x4
+    char * _base; // offset 0x8
+    int _flag; // offset 0xc
+    int _file; // offset 0x10
+    int _charbuf; // offset 0x14
+    int _bufsiz; // offset 0x18
+    char * _tmpfname; // offset 0x1c
+};
+typedef _onexit_t * _onexit_t;
+
+struct _struct_1693 { // size: 0x8
+    ulong Lo; // offset 0x0
+    long Hi; // offset 0x4
+};
+
+struct _struct_1696 { // size: 0x2
+    BYTE scale; // offset 0x0
+    BYTE sign; // offset 0x1
+};
+
+struct _struct_1698 { // size: 0x8
+    ULONG Lo32; // offset 0x0
+    ULONG Mid32; // offset 0x4
+};
+
+struct _struct_19 { // size: 0x8
+    DWORD LowPart; // offset 0x0
+    LONG HighPart; // offset 0x4
+};
+
+struct _struct_20 { // size: 0x8
+    DWORD LowPart; // offset 0x0
+    LONG HighPart; // offset 0x4
+};
+typedef tagBINDPTR BINDPTR;
+typedef tagBITMAPINFO BITMAPINFO;
+typedef tagBITMAPINFOHEADER BITMAPINFOHEADER;
+typedef int BOOL;
+typedef OLECHAR * BSTR;
+typedef uchar BYTE;
+typedef tagCALLCONV CALLCONV;
+typedef char CHAR;
+
+struct CLIENT_ID { // size: 0x8
+    void *32 UniqueProcess; // offset 0x0
+    void *32 UniqueThread; // offset 0x4
+};
+typedef ulong COLORREF;
+typedef _CONTEXT CONTEXT;
+typedef tagCY CY;
+typedef double DATE;
+typedef tagDEC DECIMAL;
+typedef tagDESCKIND DESCKIND;
+typedef long DISPID;
+typedef tagDISPPARAMS DISPPARAMS;
+typedef DLGPROC * DLGPROC;
+typedef double DOUBLE;
+typedef ulong DWORD;
+typedef ulong DWORD_PTR;
+typedef tagELEMDESC ELEMDESC;
+typedef tagEXCEPINFO EXCEPINFO;
+typedef _EXCEPTION_RECORD EXCEPTION_RECORD;
+typedef FARPROC * FARPROC;
+typedef _iobuf FILE;
+typedef float FLOAT;
+typedef _FLOATING_SAVE_AREA FLOATING_SAVE_AREA;
+typedef tagFUNCDESC FUNCDESC;
+typedef tagFUNCKIND FUNCKIND;
+typedef _GUID GUID;
+typedef void * HANDLE;
+typedef HDC__ * HDC;
+
+struct HDC__ { // size: 0x4
+    int unused; // offset 0x0
+};
+typedef void * HGDIOBJ;
+typedef void * HGLOBAL;
+typedef HINSTANCE__ * HINSTANCE;
+
+struct HINSTANCE__ { // size: 0x4
+    int unused; // offset 0x0
+};
+typedef HINSTANCE__ * HMODULE;
+typedef ulong HREFTYPE;
+typedef long HRESULT;
+typedef HWND__ * HWND;
+
+struct HWND__ { // size: 0x4
+    int unused; // offset 0x0
+};
+
+struct IDispatch { // size: 0x4
+    IDispatchVtbl * lpVtbl; // offset 0x0
+};
+
+struct IDispatchVtbl { // size: 0x1c
+    _func_6440 * QueryInterface; // offset 0x0
+    _func_6441 * AddRef; // offset 0x4
+    _func_6442 * Release; // offset 0x8
+    _func_6443 * GetTypeInfoCount; // offset 0xc
+    _func_6444 * GetTypeInfo; // offset 0x10
+    _func_6445 * GetIDsOfNames; // offset 0x14
+    _func_6446 * Invoke; // offset 0x18
+};
+typedef tagIDLDESC IDLDESC;
+typedef _GUID IID;
+
+struct IMAGE_DATA_DIRECTORY { // size: 0x8
+    ImageBaseOffset32 VirtualAddress; // offset 0x0
+    dword Size; // offset 0x4
+};
+
+struct IMAGE_DIRECTORY_ENTRY_EXPORT { // size: 0x28
+    dword Characteristics; // offset 0x0
+    dword TimeDateStamp; // offset 0x4
+    word MajorVersion; // offset 0x8
+    word MinorVersion; // offset 0xa
+    ImageBaseOffset32 Name; // offset 0xc
+    dword Base; // offset 0x10
+    dword NumberOfFunctions; // offset 0x14
+    dword NumberOfNames; // offset 0x18
+    ImageBaseOffset32 AddressOfFunctions; // offset 0x1c
+    ImageBaseOffset32 AddressOfNames; // offset 0x20
+    ImageBaseOffset32 AddressOfNameOrdinals; // offset 0x24
+};
+
+struct IMAGE_DOS_HEADER { // size: 0x80
+    char[2] e_magic; // offset 0x0
+    word e_cblp; // offset 0x2
+    word e_cp; // offset 0x4
+    word e_crlc; // offset 0x6
+    word e_cparhdr; // offset 0x8
+    word e_minalloc; // offset 0xa
+    word e_maxalloc; // offset 0xc
+    word e_ss; // offset 0xe
+    word e_sp; // offset 0x10
+    word e_csum; // offset 0x12
+    word e_ip; // offset 0x14
+    word e_cs; // offset 0x16
+    word e_lfarlc; // offset 0x18
+    word e_ovno; // offset 0x1a
+    word[4] e_res[4]; // offset 0x1c
+    word e_oemid; // offset 0x24
+    word e_oeminfo; // offset 0x26
+    word[10] e_res2[10]; // offset 0x28
+    dword e_lfanew; // offset 0x3c
+    byte[64] e_program; // offset 0x40
+};
+
+struct IMAGE_FILE_HEADER { // size: 0x14
+    word Machine; // offset 0x0
+    word NumberOfSections; // offset 0x2
+    dword TimeDateStamp; // offset 0x4
+    dword PointerToSymbolTable; // offset 0x8
+    dword NumberOfSymbols; // offset 0xc
+    word SizeOfOptionalHeader; // offset 0x10
+    word Characteristics; // offset 0x12
+};
+
+struct IMAGE_NT_HEADERS32 { // size: 0xf8
+    char[4] Signature; // offset 0x0
+    IMAGE_FILE_HEADER FileHeader; // offset 0x4
+    IMAGE_OPTIONAL_HEADER32 OptionalHeader; // offset 0x18
+};
+
+struct IMAGE_OPTIONAL_HEADER32 { // size: 0xe0
+    word Magic; // offset 0x0
+    byte MajorLinkerVersion; // offset 0x2
+    byte MinorLinkerVersion; // offset 0x3
+    dword SizeOfCode; // offset 0x4
+    dword SizeOfInitializedData; // offset 0x8
+    dword SizeOfUninitializedData; // offset 0xc
+    ImageBaseOffset32 AddressOfEntryPoint; // offset 0x10
+    ImageBaseOffset32 BaseOfCode; // offset 0x14
+    ImageBaseOffset32 BaseOfData; // offset 0x18
+    pointer32 ImageBase; // offset 0x1c
+    dword SectionAlignment; // offset 0x20
+    dword FileAlignment; // offset 0x24
+    word MajorOperatingSystemVersion; // offset 0x28
+    word MinorOperatingSystemVersion; // offset 0x2a
+    word MajorImageVersion; // offset 0x2c
+    word MinorImageVersion; // offset 0x2e
+    word MajorSubsystemVersion; // offset 0x30
+    word MinorSubsystemVersion; // offset 0x32
+    dword Win32VersionValue; // offset 0x34
+    dword SizeOfImage; // offset 0x38
+    dword SizeOfHeaders; // offset 0x3c
+    dword CheckSum; // offset 0x40
+    word Subsystem; // offset 0x44
+    word DllCharacteristics; // offset 0x46
+    dword SizeOfStackReserve; // offset 0x48
+    dword SizeOfStackCommit; // offset 0x4c
+    dword SizeOfHeapReserve; // offset 0x50
+    dword SizeOfHeapCommit; // offset 0x54
+    dword LoaderFlags; // offset 0x58
+    dword NumberOfRvaAndSizes; // offset 0x5c
+    IMAGE_DATA_DIRECTORY[16] DataDirectory; // offset 0x60
+};
+
+struct IMAGE_RESOURCE_DATA_ENTRY { // size: 0x10
+    dword OffsetToData; // offset 0x0
+    dword Size; // offset 0x4
+    dword CodePage; // offset 0x8
+    dword Reserved; // offset 0xc
+};
+
+struct IMAGE_RESOURCE_DIRECTORY { // size: 0x10
+    dword Characteristics; // offset 0x0
+    dword TimeDateStamp; // offset 0x4
+    word MajorVersion; // offset 0x8
+    word MinorVersion; // offset 0xa
+    word NumberOfNamedEntries; // offset 0xc
+    word NumberOfIdEntries; // offset 0xe
+};
+
+struct IMAGE_RESOURCE_DIRECTORY_ENTRY { // size: 0x8
+    IMAGE_RESOURCE_DIRECTORY_ENTRY_NameUnion NameUnion; // offset 0x0
+    IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryUnion DirectoryUnion; // offset 0x4
+};
+
+struct IMAGE_RESOURCE_DIRECTORY_ENTRY_DirectoryStruct { // size: 0x4
+    dword:31 OffsetToDirectory; // offset 0x0
+    dword:1 DataIsDirectory; // offset 0x3
+};
+
+struct IMAGE_RESOURCE_DIRECTORY_ENTRY_NameStruct { // size: 0x4
+    dword:31 NameOffset; // offset 0x0
+    dword:1 NameIsString; // offset 0x3
+};
+
+struct IMAGE_SECTION_HEADER { // size: 0x28
+    char[8] Name; // offset 0x0
+    Misc Misc; // offset 0x8
+    ImageBaseOffset32 VirtualAddress; // offset 0xc
+    dword SizeOfRawData; // offset 0x10
+    dword PointerToRawData; // offset 0x14
+    dword PointerToRelocations; // offset 0x18
+    dword PointerToLinenumbers; // offset 0x1c
+    word NumberOfRelocations; // offset 0x20
+    word NumberOfLinenumbers; // offset 0x22
+    SectionFlags Characteristics; // offset 0x24
+};
+typedef pointer32 ImageBaseOffset32;
+typedef int INT;
+typedef int INT_PTR;
+typedef tagINVOKEKIND INVOKEKIND;
+
+struct IRecordInfo { // size: 0x4
+    IRecordInfoVtbl * lpVtbl; // offset 0x0
+};
+
+struct IRecordInfoVtbl { // size: 0x4c
+    _func_6638 * QueryInterface; // offset 0x0
+    _func_6639 * AddRef; // offset 0x4
+    _func_6640 * Release; // offset 0x8
+    _func_6641 * RecordInit; // offset 0xc
+    _func_6642 * RecordClear; // offset 0x10
+    _func_6643 * RecordCopy; // offset 0x14
+    _func_6644 * GetGuid; // offset 0x18
+    _func_6645 * GetName; // offset 0x1c
+    _func_6646 * GetSize; // offset 0x20
+    _func_6647 * GetTypeInfo; // offset 0x24
+    _func_6648 * GetField; // offset 0x28
+    _func_6649 * GetFieldNoCopy; // offset 0x2c
+    _func_6650 * PutField; // offset 0x30
+    _func_6651 * PutFieldNoCopy; // offset 0x34
+    _func_6652 * GetFieldNames; // offset 0x38
+    _func_6653 * IsMatchingType; // offset 0x3c
+    _func_6654 * RecordCreate; // offset 0x40
+    _func_6655 * RecordCreateCopy; // offset 0x44
+    _func_6656 * RecordDestroy; // offset 0x48
+};
+
+struct ITypeComp { // size: 0x4
+    ITypeCompVtbl * lpVtbl; // offset 0x0
+};
+
+struct ITypeCompVtbl { // size: 0x14
+    _func_6458 * QueryInterface; // offset 0x0
+    _func_6459 * AddRef; // offset 0x4
+    _func_6460 * Release; // offset 0x8
+    _func_6461 * Bind; // offset 0xc
+    _func_6462 * BindType; // offset 0x10
+};
+
+struct ITypeInfo { // size: 0x4
+    ITypeInfoVtbl * lpVtbl; // offset 0x0
+};
+
+struct ITypeInfoVtbl { // size: 0x58
+    _func_6467 * QueryInterface; // offset 0x0
+    _func_6468 * AddRef; // offset 0x4
+    _func_6469 * Release; // offset 0x8
+    _func_6470 * GetTypeAttr; // offset 0xc
+    _func_6471 * GetTypeComp; // offset 0x10
+    _func_6472 * GetFuncDesc; // offset 0x14
+    _func_6473 * GetVarDesc; // offset 0x18
+    _func_6474 * GetNames; // offset 0x1c
+    _func_6475 * GetRefTypeOfImplType; // offset 0x20
+    _func_6476 * GetImplTypeFlags; // offset 0x24
+    _func_6477 * GetIDsOfNames; // offset 0x28
+    _func_6478 * Invoke; // offset 0x2c
+    _func_6479 * GetDocumentation; // offset 0x30
+    _func_6480 * GetDllEntry; // offset 0x34
+    _func_6481 * GetRefTypeInfo; // offset 0x38
+    _func_6482 * AddressOfMember; // offset 0x3c
+    _func_6483 * CreateInstance; // offset 0x40
+    _func_6484 * GetMops; // offset 0x44
+    _func_6485 * GetContainingTypeLib; // offset 0x48
+    _func_6486 * ReleaseTypeAttr; // offset 0x4c
+    _func_6487 * ReleaseFuncDesc; // offset 0x50
+    _func_6488 * ReleaseVarDesc; // offset 0x54
+};
+
+struct ITypeLib { // size: 0x4
+    ITypeLibVtbl * lpVtbl; // offset 0x0
+};
+
+struct ITypeLibVtbl { // size: 0x34
+    _func_6556 * QueryInterface; // offset 0x0
+    _func_6557 * AddRef; // offset 0x4
+    _func_6558 * Release; // offset 0x8
+    _func_6559 * GetTypeInfoCount; // offset 0xc
+    _func_6560 * GetTypeInfo; // offset 0x10
+    _func_6561 * GetTypeInfoType; // offset 0x14
+    _func_6562 * GetTypeInfoOfGuid; // offset 0x18
+    _func_6563 * GetLibAttr; // offset 0x1c
+    _func_6564 * GetTypeComp; // offset 0x20
+    _func_6565 * GetDocumentation; // offset 0x24
+    _func_6566 * IsName; // offset 0x28
+    _func_6567 * FindName; // offset 0x2c
+    _func_6568 * ReleaseTLibAttr; // offset 0x30
+};
+
+struct IUnknown { // size: 0x4
+    IUnknownVtbl * lpVtbl; // offset 0x0
+};
+
+struct IUnknownVtbl { // size: 0xc
+    _func_5021 * QueryInterface; // offset 0x0
+    _func_5022 * AddRef; // offset 0x4
+    _func_5023 * Release; // offset 0x8
+};
+typedef _LARGE_INTEGER LARGE_INTEGER;
+typedef ulong LCID;
+typedef long LONG;
+typedef long LONG_PTR;
+typedef double LONGLONG;
+typedef long LPARAM;
+typedef BOOL * LPBOOL;
+typedef OLECHAR * LPCOLESTR;
+typedef CHAR * LPCSTR;
+typedef void * LPCVOID;
+typedef WCHAR * LPCWSTR;
+typedef DWORD * LPDWORD;
+typedef _FILETIME * LPFILETIME;
+typedef OLECHAR * LPOLESTR;
+typedef tagPARAMDESCEX * LPPARAMDESCEX;
+typedef tagRECT * LPRECT;
+typedef tagSIZE * LPSIZE;
+typedef CHAR * LPSTR;
+typedef PTOP_LEVEL_EXCEPTION_FILTER * LPTOP_LEVEL_EXCEPTION_FILTER;
+typedef IUnknown * LPUNKNOWN;
+typedef void * LPVOID;
+typedef WCHAR * LPWSTR;
+typedef ulong MCIERROR;
+typedef long MEMBERID;
+typedef wchar_t OLECHAR;
+typedef tagPARAMDESC PARAMDESC;
+typedef BYTE * PBYTE;
+typedef WCHAR * PCNZWCH;
+typedef CONTEXT * PCONTEXT;
+typedef EXCEPTION_RECORD * PEXCEPTION_RECORD;
+typedef _IMAGE_SECTION_HEADER * PIMAGE_SECTION_HEADER;
+typedef PTOP_LEVEL_EXCEPTION_FILTER * PTOP_LEVEL_EXCEPTION_FILTER;
+typedef uint * PUINT;
+typedef void * PVOID;
+typedef tagRGBQUAD RGBQUAD;
+typedef tagSAFEARRAY SAFEARRAY;
+typedef tagSAFEARRAYBOUND SAFEARRAYBOUND;
+typedef long SCODE;
+
+enum SectionFlags {
+    IMAGE_SCN_TYPE_NO_PAD = 8,
+    IMAGE_SCN_RESERVED_0001 = 16,
+    IMAGE_SCN_CNT_CODE = 32,
+    IMAGE_SCN_CNT_INITIALIZED_DATA = 64,
+    IMAGE_SCN_CNT_UNINITIALIZED_DATA = 128,
+    IMAGE_SCN_LNK_OTHER = 256,
+    IMAGE_SCN_LNK_INFO = 512,
+    IMAGE_SCN_RESERVED_0040 = 1024,
+    IMAGE_SCN_LNK_REMOVE = 2048,
+    IMAGE_SCN_LNK_COMDAT = 4096,
+    IMAGE_SCN_GPREL = 32768,
+    IMAGE_SCN_MEM_16BIT = 131072,
+    IMAGE_SCN_MEM_PURGEABLE = 131072,
+    IMAGE_SCN_MEM_LOCKED = 262144,
+    IMAGE_SCN_MEM_PRELOAD = 524288,
+    IMAGE_SCN_ALIGN_1BYTES = 1048576,
+    IMAGE_SCN_ALIGN_2BYTES = 2097152,
+    IMAGE_SCN_ALIGN_4BYTES = 3145728,
+    IMAGE_SCN_ALIGN_8BYTES = 4194304,
+    IMAGE_SCN_ALIGN_16BYTES = 5242880,
+    IMAGE_SCN_ALIGN_32BYTES = 6291456,
+    IMAGE_SCN_ALIGN_64BYTES = 7340032,
+    IMAGE_SCN_ALIGN_128BYTES = 8388608,
+    IMAGE_SCN_ALIGN_256BYTES = 9437184,
+    IMAGE_SCN_ALIGN_512BYTES = 10485760,
+    IMAGE_SCN_ALIGN_1024BYTES = 11534336,
+    IMAGE_SCN_ALIGN_2048BYTES = 12582912,
+    IMAGE_SCN_ALIGN_4096BYTES = 13631488,
+    IMAGE_SCN_ALIGN_8192BYTES = 14680064,
+    IMAGE_SCN_LNK_NRELOC_OVFL = 16777216,
+    IMAGE_SCN_MEM_DISCARDABLE = 33554432,
+    IMAGE_SCN_MEM_NOT_CACHED = 67108864,
+    IMAGE_SCN_MEM_NOT_PAGED = 134217728,
+    IMAGE_SCN_MEM_SHARED = 268435456,
+    IMAGE_SCN_MEM_EXECUTE = 536870912,
+    IMAGE_SCN_MEM_READ = 1073741824,
+    IMAGE_SCN_MEM_WRITE = 2147483648,
+};
+typedef short SHORT;
+typedef ulong SIZE_T;
+typedef uint size_t;
+
+struct StringFileInfo { // size: 0x6
+    word wLength; // offset 0x0
+    word wValueLength; // offset 0x2
+    word wType; // offset 0x4
+};
+
+struct StringInfo { // size: 0x6
+    word wLength; // offset 0x0
+    word wValueLength; // offset 0x2
+    word wType; // offset 0x4
+};
+
+struct StringTable { // size: 0x6
+    word wLength; // offset 0x0
+    word wValueLength; // offset 0x2
+    word wType; // offset 0x4
+};
+typedef tagSYSKIND SYSKIND;
+
+struct tagARRAYDESC { // size: 0x14
+    TYPEDESC tdescElem; // offset 0x0
+    USHORT cDims; // offset 0x8
+    SAFEARRAYBOUND[1] rgbounds; // offset 0xc
+};
+
+struct tagBITMAPINFO { // size: 0x2c
+    BITMAPINFOHEADER bmiHeader; // offset 0x0
+    RGBQUAD[1] bmiColors; // offset 0x28
+};
+
+struct tagBITMAPINFOHEADER { // size: 0x28
+    DWORD biSize; // offset 0x0
+    LONG biWidth; // offset 0x4
+    LONG biHeight; // offset 0x8
+    WORD biPlanes; // offset 0xc
+    WORD biBitCount; // offset 0xe
+    DWORD biCompression; // offset 0x10
+    DWORD biSizeImage; // offset 0x14
+    LONG biXPelsPerMeter; // offset 0x18
+    LONG biYPelsPerMeter; // offset 0x1c
+    DWORD biClrUsed; // offset 0x20
+    DWORD biClrImportant; // offset 0x24
+};
+
+enum tagCALLCONV {
+    CC_FASTCALL = 0,
+    CC_CDECL = 1,
+    CC_MSCPASCAL = 2,
+    CC_PASCAL = 3,
+    CC_MACPASCAL = 4,
+    CC_STDCALL = 5,
+    CC_FPFASTCALL = 6,
+    CC_SYSCALL = 7,
+    CC_MPWCDECL = 8,
+    CC_MPWPASCAL = 9,
+    CC_MAX = 10,
+};
+
+struct tagDEC { // size: 0x10
+    USHORT wReserved; // offset 0x0
+    _union_1695 u; // offset 0x2
+    ULONG Hi32; // offset 0x4
+    _union_1697 u2; // offset 0x8
+};
+
+enum tagDESCKIND {
+    DESCKIND_NONE = 0,
+    DESCKIND_FUNCDESC = 1,
+    DESCKIND_VARDESC = 2,
+    DESCKIND_TYPECOMP = 3,
+    DESCKIND_IMPLICITAPPOBJ = 4,
+    DESCKIND_MAX = 5,
+};
+
+struct tagDISPPARAMS { // size: 0x10
+    VARIANTARG * rgvarg; // offset 0x0
+    DISPID * rgdispidNamedArgs; // offset 0x4
+    UINT cArgs; // offset 0x8
+    UINT cNamedArgs; // offset 0xc
+};
+
+struct tagELEMDESC { // size: 0x10
+    TYPEDESC tdesc; // offset 0x0
+    _union_2702 u; // offset 0x8
+};
+
+struct tagEXCEPINFO { // size: 0x20
+    WORD wCode; // offset 0x0
+    WORD wReserved; // offset 0x2
+    BSTR bstrSource; // offset 0x4
+    BSTR bstrDescription; // offset 0x8
+    BSTR bstrHelpFile; // offset 0xc
+    DWORD dwHelpContext; // offset 0x10
+    PVOID pvReserved; // offset 0x14
+    _func_6342 * pfnDeferredFillIn; // offset 0x18
+    SCODE scode; // offset 0x1c
+};
+
+struct tagFUNCDESC { // size: 0x34
+    MEMBERID memid; // offset 0x0
+    SCODE * lprgscode; // offset 0x4
+    ELEMDESC * lprgelemdescParam; // offset 0x8
+    FUNCKIND funckind; // offset 0xc
+    INVOKEKIND invkind; // offset 0x10
+    CALLCONV callconv; // offset 0x14
+    SHORT cParams; // offset 0x18
+    SHORT cParamsOpt; // offset 0x1a
+    SHORT oVft; // offset 0x1c
+    SHORT cScodes; // offset 0x1e
+    ELEMDESC elemdescFunc; // offset 0x20
+    WORD wFuncFlags; // offset 0x30
+};
+
+enum tagFUNCKIND {
+    FUNC_VIRTUAL = 0,
+    FUNC_PUREVIRTUAL = 1,
+    FUNC_NONVIRTUAL = 2,
+    FUNC_STATIC = 3,
+    FUNC_DISPATCH = 4,
+};
+
+struct tagIDLDESC { // size: 0x8
+    ULONG_PTR dwReserved; // offset 0x0
+    USHORT wIDLFlags; // offset 0x4
+};
+
+enum tagINVOKEKIND {
+    INVOKE_FUNC = 1,
+    INVOKE_PROPERTYGET = 2,
+    INVOKE_PROPERTYPUT = 4,
+    INVOKE_PROPERTYPUTREF = 8,
+};
+
+struct tagPARAMDESC { // size: 0x8
+    LPPARAMDESCEX pparamdescex; // offset 0x0
+    USHORT wParamFlags; // offset 0x4
+};
+
+struct tagPARAMDESCEX { // size: 0x18
+    ULONG cBytes; // offset 0x0
+    VARIANTARG varDefaultValue; // offset 0x8
+};
+
+struct tagRECT { // size: 0x10
+    LONG left; // offset 0x0
+    LONG top; // offset 0x4
+    LONG right; // offset 0x8
+    LONG bottom; // offset 0xc
+};
+
+struct tagRGBQUAD { // size: 0x4
+    BYTE rgbBlue; // offset 0x0
+    BYTE rgbGreen; // offset 0x1
+    BYTE rgbRed; // offset 0x2
+    BYTE rgbReserved; // offset 0x3
+};
+
+struct tagSAFEARRAY { // size: 0x18
+    USHORT cDims; // offset 0x0
+    USHORT fFeatures; // offset 0x2
+    ULONG cbElements; // offset 0x4
+    ULONG cLocks; // offset 0x8
+    PVOID pvData; // offset 0xc
+    SAFEARRAYBOUND[1] rgsabound; // offset 0x10
+};
+
+struct tagSAFEARRAYBOUND { // size: 0x8
+    ULONG cElements; // offset 0x0
+    LONG lLbound; // offset 0x4
+};
+
+struct tagSIZE { // size: 0x8
+    LONG cx; // offset 0x0
+    LONG cy; // offset 0x4
+};
+
+enum tagSYSKIND {
+    SYS_WIN16 = 0,
+    SYS_WIN32 = 1,
+    SYS_MAC = 2,
+    SYS_WIN64 = 3,
+};
+
+struct tagTLIBATTR { // size: 0x20
+    GUID guid; // offset 0x0
+    LCID lcid; // offset 0x10
+    SYSKIND syskind; // offset 0x14
+    WORD wMajorVerNum; // offset 0x18
+    WORD wMinorVerNum; // offset 0x1a
+    WORD wLibFlags; // offset 0x1c
+};
+
+struct tagTYPEATTR { // size: 0x4c
+    GUID guid; // offset 0x0
+    LCID lcid; // offset 0x10
+    DWORD dwReserved; // offset 0x14
+    MEMBERID memidConstructor; // offset 0x18
+    MEMBERID memidDestructor; // offset 0x1c
+    LPOLESTR lpstrSchema; // offset 0x20
+    ULONG cbSizeInstance; // offset 0x24
+    TYPEKIND typekind; // offset 0x28
+    WORD cFuncs; // offset 0x2c
+    WORD cVars; // offset 0x2e
+    WORD cImplTypes; // offset 0x30
+    WORD cbSizeVft; // offset 0x32
+    WORD cbAlignment; // offset 0x34
+    WORD wTypeFlags; // offset 0x36
+    WORD wMajorVerNum; // offset 0x38
+    WORD wMinorVerNum; // offset 0x3a
+    TYPEDESC tdescAlias; // offset 0x3c
+    IDLDESC idldescType; // offset 0x44
+};
+
+struct tagTYPEDESC { // size: 0x8
+    _union_2691 u; // offset 0x0
+    VARTYPE vt; // offset 0x4
+};
+
+enum tagTYPEKIND {
+    TKIND_ENUM = 0,
+    TKIND_RECORD = 1,
+    TKIND_MODULE = 2,
+    TKIND_INTERFACE = 3,
+    TKIND_DISPATCH = 4,
+    TKIND_COCLASS = 5,
+    TKIND_ALIAS = 6,
+    TKIND_UNION = 7,
+    TKIND_MAX = 8,
+};
+
+struct tagVARDESC { // size: 0x24
+    MEMBERID memid; // offset 0x0
+    LPOLESTR lpstrSchema; // offset 0x4
+    _union_2711 u; // offset 0x8
+    ELEMDESC elemdescVar; // offset 0xc
+    WORD wVarFlags; // offset 0x1c
+    VARKIND varkind; // offset 0x20
+};
+
+struct tagVARIANT { // size: 0x10
+    _union_2683 n1; // offset 0x0
+};
+
+enum tagVARKIND {
+    VAR_PERINSTANCE = 0,
+    VAR_STATIC = 1,
+    VAR_CONST = 2,
+    VAR_DISPATCH = 3,
+};
+typedef tagTLIBATTR TLIBATTR;
+
+struct tm { // size: 0x24
+    int tm_sec; // offset 0x0
+    int tm_min; // offset 0x4
+    int tm_hour; // offset 0x8
+    int tm_mday; // offset 0xc
+    int tm_mon; // offset 0x10
+    int tm_year; // offset 0x14
+    int tm_wday; // offset 0x18
+    int tm_yday; // offset 0x1c
+    int tm_isdst; // offset 0x20
+};
+typedef tagTYPEATTR TYPEATTR;
+typedef tagTYPEDESC TYPEDESC;
+typedef tagTYPEKIND TYPEKIND;
+typedef uint UINT;
+typedef uint UINT_PTR;
+typedef ulong ULONG;
+typedef ulong ULONG_PTR;
+typedef double ULONGLONG;
+typedef ushort USHORT;
+
+struct Var { // size: 0x6
+    word wLength; // offset 0x0
+    word wValueLength; // offset 0x2
+    word wType; // offset 0x4
+};
+typedef tagVARDESC VARDESC;
+
+struct VarFileInfo { // size: 0x6
+    word wLength; // offset 0x0
+    word wValueLength; // offset 0x2
+    word wType; // offset 0x4
+};
+typedef tagVARIANT VARIANT;
+typedef short VARIANT_BOOL;
+typedef tagVARIANT VARIANTARG;
+typedef tagVARKIND VARKIND;
+typedef ushort VARTYPE;
+
+struct VS_VERSION_INFO { // size: 0x5c
+    word StructLength; // offset 0x0
+    word ValueLength; // offset 0x2
+    word StructType; // offset 0x4
+    unicode Info; // offset 0x6
+    byte[2] Padding; // offset 0x26
+    dword Signature; // offset 0x28
+    word[2] StructVersion; // offset 0x2c
+    word[4] FileVersion; // offset 0x30
+    word[4] ProductVersion; // offset 0x38
+    dword[2] FileFlagsMask; // offset 0x40
+    dword FileFlags; // offset 0x48
+    dword FileOS; // offset 0x4c
+    dword FileType; // offset 0x50
+    dword FileSubtype; // offset 0x54
+    dword FileTimestamp; // offset 0x58
+};
+typedef wchar_t WCHAR;
+typedef ushort WORD;
+typedef uint WPARAM;

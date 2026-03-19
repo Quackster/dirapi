@@ -1,0 +1,582 @@
+================================================================================
+ORDINAL GROUP ANALYSIS - Director Xtra DLL (dirapi.dll)
+================================================================================
+Decompiled from: ghidra_output/decompiled_functions.c
+Analysis date: 2026-03-16
+
+This file documents the exported ordinal functions and attempts to identify
+which MOA (Macromedia Open Architecture) interfaces they implement.
+
+================================================================================
+TABLE OF CONTENTS
+================================================================================
+1. Ordinals 10-23  - Low-level file I/O (RIFX container management)
+2. Ordinals 35-39  - Handle/data blob management interface
+3. Ordinals 45-60  - Score/movie playback engine (DrMovie core)
+4. Ordinals 62-77  - Stage/sprite rendering layer
+5. Ordinals 78-98  - DrPlayer interface (main player/window management)
+6. Ordinals 100-147 - Extended player/movie control functions
+7. Supporting ordinal groups (900s, 1000s, etc.)
+
+================================================================================
+1. ORDINALS 10-23: Low-Level RIFX File I/O
+================================================================================
+
+These ordinals implement the low-level Director file format reader/writer.
+They operate on a RIFX container structure (Director's variant of the RIFF
+format) and use a consistent "param_1" that is a pointer to an I/O context
+object.
+
+Key characteristics:
+- All take an I/O context (param_1) as the first parameter.
+- Use FUN_680030e0/FUN_68003110 as lock/unlock pairs (critical section).
+- Work with chunk structures containing {fourCC, size, offset, flags, data}.
+- The magic value 0x52494658 = "RIFX" confirms the RIFX format.
+- The magic value 0x696d6170 = "imap" (index map chunk).
+- The magic value 0x6d6d6170 = "mmap" (memory map chunk).
+
+Identified functions:
+  Ordinal_10 - (at line 2971) File open/initialize
+  Ordinal_11 - (at line 3029) File read chunk
+  Ordinal_12 - (at line 4672) File utility
+  Ordinal_13 - Save/flush all dirty chunks to file
+  Ordinal_14 - (at line 5283) File close/cleanup
+  Ordinal_15 - (at line 3450) Chunk read
+  Ordinal_16 - (at line 4903) Chunk operation
+  Ordinal_17 - (at line 3743) Chunk write
+  Ordinal_18 - (at line 4789) Chunk operation
+  Ordinal_19 - Create new chunk in RIFX container
+  Ordinal_20 - Write data to chunk from handle (uses Ordinal_1114/1115/1116)
+  Ordinal_21 - Setup memory-map chunk (creates "mmap" chunk binding)
+  Ordinal_22 - (at line 4700) File utility
+  Ordinal_23 - (at line 4746) File utility
+
+Probable MOA interface: IMoaFile2 / internal RIFX container manager
+These are NOT part of a standard MOA interface - they are the Director-specific
+RIFX file format implementation used internally.
+
+================================================================================
+2. ORDINALS 35-39: Handle/Data Blob Management
+================================================================================
+
+These ordinals manage opaque memory handles (data blobs), likely used for
+passing data between components (cast members, scripts, etc.).
+
+Structure: The handle system uses Ordinal_1111 (alloc), Ordinal_1113 (free),
+Ordinal_1114 (lock/deref), Ordinal_1115 (unlock), Ordinal_1116 (get size),
+Ordinal_1117 (resize). This is the classic Mac-style Handle Manager pattern.
+
+Identified functions:
+  Ordinal_35(param_1) -> int
+    - Allocates a new handle of size (param_1 + 8), stores param_1 at the
+      start of the handle data. Returns the handle.
+    - This is a "data blob create" function.
+
+  Ordinal_36(param_1) -> 1
+    - Frees a handle if non-null via Ordinal_1113.
+    - This is a "data blob dispose" function.
+
+  Ordinal_37(param_1, param_2, param_3, param_4)
+    - Complex: Reads the handle at *param_1, navigates an index structure
+      within it (array of offsets), and inserts/replaces data at index
+      param_2 with param_3 (data pointer) of size param_4.
+    - This is a "data blob set indexed element" function.
+    - The internal structure has: [firstInt=offset, then at that offset:
+      count, offsets[count+1], then data segments].
+
+  Ordinal_38(param_1, param_2, param_3, param_4)
+    - Reads from a handle at index param_2, outputs to param_3 with max
+      size param_4. Returns 0 on failure.
+    - This is a "data blob get indexed element" function.
+    - Referenced by Ordinal_56 to read movie title/comments from cast data.
+
+  Ordinal_39(param_1) -> value
+    - Returns the last value from the index structure in a handle.
+    - This is a "data blob get total size" or "get last element" function.
+
+Probable MOA interface: None (internal utility). These implement a generic
+"indexed data blob" used throughout Director for storing variable-length
+records inside a single handle allocation. Similar to Mac's resource fork
+concept.
+
+================================================================================
+3. ORDINALS 45-60: Score/Movie Playback Engine (DrMovie Core)
+================================================================================
+
+These ordinals operate on the movie/score object. They all share a common
+pattern of accessing *(param_1 + 0x20) to get a "movie descriptor" pointer,
+then entering a critical section via Ordinal_2330/2331.
+
+The first parameter (param_1) is a "score context" pointer. The structure at
+offset 0x20 points to the movie's internal state, which contains sub-objects
+at various offsets for managing sprites, channels, the stage, etc.
+
+Access pattern (consistent across all):
+  piVar = *(param_1 + 0x20);   // movie descriptor
+  if (piVar && piVar[1]) {      // if movie is loaded
+    context = *piVar;            // get current context
+    Ordinal_2330();              // enter critical section
+    ... do work ...
+    Ordinal_2331();              // leave critical section
+  }
+
+Identified functions:
+  Ordinal_45(param_1, param_2) - Get movie settings/properties
+    - Copies 0x418 bytes (0x106 dwords) from offset 0x28 in the movie
+      descriptor. This is the "movie info" or "movie header" structure.
+    - Called by Ordinal_100 (wrapping with player context).
+
+  Ordinal_46(param_1, param_2) - Set/clear movie pause state
+    - Toggles bit 0x04 in the movie flags, calls FUN_680d1190 (sound
+      pause/resume), FUN_680af6a0, FUN_680848e0/68084890.
+
+  Ordinal_47(param_1, param_2) - Movie state change
+
+  Ordinal_48(param_1, param_2) - Update/render display
+    - Calls FUN_680b1290() which is likely a display update/blit function.
+
+  Ordinal_49(param_1, param_2, param_3) - Go to frame
+    - Sets the current frame (param_2) with flags (param_3).
+    - Calls FUN_680d1fc0 (frame position) and FUN_68083960 (mark dirty).
+
+  Ordinal_50(param_1, param_2, param_3) - Set frame range / play range
+    - Calls FUN_680d1e90.
+
+  Ordinal_51(param_1, param_2) - Set playback mode/tempo
+    - Calls FUN_680d0ea0.
+
+  Ordinal_52(param_1, param_2) - Set sound level/property
+    - Writes param_2 to offset 0x670 in movie data, calls FUN_680d0f50.
+
+  Ordinal_53(param_1, param_2) - Set movie property (offset 0x678)
+
+  Ordinal_54(param_1, param_2) - Get sound/media object handle
+    - Reads value from piVar[1] + 0x28 (likely the sound channel or
+      media handle).
+
+  Ordinal_55(param_1) - Step/advance playback
+    - Calls FUN_680d1db0.
+
+  Ordinal_56(param_1, param_2, param_3) - Get movie description/info struct
+    - Large function (600 bytes). Reads palette info, dimensions, frame count,
+      comments (via Ordinal_38), cast member names, and populates a 0x1464-byte
+      output structure. This is the comprehensive "movie info" query.
+
+  Ordinal_57(param_1, param_2, param_3) - Set stage window title/callback
+    - Uses COM-like QueryInterface pattern (IID at DAT_681765a8).
+    - Interacts with the container/host application.
+
+  Ordinal_58(param_1, param_2) - Get current frame number
+    - Calls FUN_680d0d60 on the movie byte pointer.
+
+  Ordinal_59 (at line 144730) - (small, likely a simple getter)
+
+  Ordinal_60(param_1, param_2) - Render movie to bitmap/DC
+    - Uses Win32 StretchDIBits to paint movie content to an HDC.
+    - Accesses BITMAPINFO structure. This is the "draw to DC" function.
+
+Probable MOA interface: DrMovie / IMoaDrMovie
+This is the core movie playback API. Functions correspond to methods like
+goToFrame, play, stop, getMovieInfo, getCurrentFrame, renderToGWorld/DC, etc.
+
+================================================================================
+4. ORDINALS 62-77: Stage/Sprite Rendering Layer
+================================================================================
+
+These ordinals operate on the stage/sprite rendering subsystem. Many take a
+pointer to a "stage object" (an int* whose first member points to internal
+sprite display data).
+
+Identified functions:
+  Ordinal_62(param_1, param_2) -> uint - Handle scroll wheel/input event
+    - Calls FUN_68065e20 and FUN_6807efb0 (input processing).
+
+  Ordinal_63(param_1, param_2, param_3) -> bool - Hit test / point query
+    - Calls FUN_68069b70. Given coordinates, returns whether a sprite
+      was hit and which one.
+
+  Ordinal_64(param_1, param_2) - Get next event / timer tick
+    - Calls FUN_68068820. Likely retrieves the next scheduled update time.
+
+  Ordinal_65(param_1, param_2) - Set sprite property
+    - Calls FUN_68068a30.
+
+  Ordinal_66(param_1, param_2) - Set cursor visibility / stage property
+    - Calls FUN_6807ff20. Referenced by Ordinal_89 and Ordinal_98 for
+      showing/hiding the cursor during playback transitions.
+
+  Ordinal_67(param_1, param_2) - Set property at offset 0x1a8
+  Ordinal_68(param_1) - Get property at offset 0x1a8
+
+  Ordinal_69 (at line 99301) - Stage/sprite operation
+
+  Ordinal_70(param_1) - Get stage lock state
+    - Lightweight accessor for the movie descriptor's lock state.
+
+  Ordinal_71(param_1, param_2) - Set stage rendering property
+    - Calls FUN_680cdd30 with the sound/media channel pointer.
+
+  Ordinal_72(param_1, param_2, param_3) - Convert color space
+    - Converts between indexed and RGB color, using FUN_6809b330/6809b2f0.
+
+  Ordinal_73 (at line 144750) - small utility
+  Ordinal_74 (at line 152866) - sprite/display related
+
+  Ordinal_75(param_1, param_2, param_3) - Set sprite frame/position
+    - Calls FUN_680d11f0. Used in score playback to advance sprites.
+
+  Ordinal_76(param_1, param_2) - Invalidate/redraw sprite region
+    - Calls FUN_680d1210.
+
+  Ordinal_77(param_1, param_2) - Send command to sprite
+    - Checks for vtable function at offset 0x50, calls FUN_6807edc0.
+    - This is a polymorphic dispatch to sprite behavior.
+
+Probable MOA interface: Internal Stage/Sprite display subsystem
+Not a single MOA interface but rather the internal rendering/display layer.
+Functions like 63 (hit test), 66 (cursor), 72 (color conversion), and 75
+(frame positioning) correspond to stage management operations.
+
+================================================================================
+5. ORDINALS 78-98: DrPlayer Interface (Main Player/Window Management)
+================================================================================
+
+This is the most important group. These ordinals manage the "player" - the
+top-level object that coordinates movie playback, window management, and
+user interaction.
+
+The player object structure (param_1 is int*):
+  param_1[0]  = valid flag (1 = active, 0 = disposed)
+  param_1[1]  = unused/padding
+  param_1[2]  = parent/host context pointer
+  param_1[3]  = score/movie handle (passed to ordinals 45-60)
+  param_1[4]  = player state (0xFFFF=playing, 1=paused, 2=error)
+  param_1[5]  = idle state (0/1/2)
+  param_1[6]  = exit/quit reason code
+  param_1[7]  = flags
+  param_1[8]  = callback/handler
+  param_1[9]  = paused/disabled flag (0=normal, 1=suspended)
+  param_1[10] = user data
+  param_1[11] = busy flag
+
+These ordinals all check (param_1 != NULL && *param_1 != 0) before operating.
+
+Identified functions:
+  Ordinal_78(param_1, param_2, param_3, param_4, param_5, param_6, param_7)
+    - Main event loop / idle processing.
+    - Calls Ordinal_64 (get timer), Ordinal_97 (process idle).
+    - Handles timeout (param_4) via Ordinal_1541 (GetTickCount).
+    - This is "DrPlayer::Idle" or "DrPlayer::ProcessEvents".
+
+  Ordinal_79(param_1, param_2) - Step forward/backward by N frames
+    - Gets current frame (Ordinal_58), total frames (Ordinal_154), adds
+      param_2, clamps, calls Ordinal_49 (goToFrame).
+
+  Ordinal_80(param_1, param_2, param_3) - Initialize/create player
+    - Sets DAT_681956e0 (global app instance).
+    - Copies 0x6a dwords from param_3 (callbacks/vtable) into the player.
+    - Calls FUN_68096950 (create score) and FUN_6805e110 (create stage).
+    - Returns 1 on success. This is "DrPlayer::Initialize".
+
+  Ordinal_81(param_1) - Shutdown/dispose player
+    - Clears all fields, calls Ordinal_1130 (memset 0) on the player.
+    - Disposes the score (FUN_68090d50), stage (FUN_6805e230).
+    - Calls Ordinal_1904, Ordinal_1039, Ordinal_2072 for cleanup.
+    - This is "DrPlayer::Dispose".
+
+  Ordinal_82(param_1, param_2, param_3) - Open movie with flags
+    - Delegates to FUN_68009c00(param_3).
+    - The large FUN_68009c00 does: create score, load RIFX file via
+      Ordinal_2076, register callbacks, check "Author" string.
+    - This is "DrPlayer::OpenMovie".
+
+  Ordinal_83() - Close current movie
+    - Calls FUN_68009640(0). This is "DrPlayer::CloseMovie".
+
+  Ordinal_84(param_1, param_2, param_3, param_4, param_5, param_6, param_7)
+    - Creates a sub-player/linked movie player.
+    - Allocates 0x50 bytes, sets up score (FUN_68096a30).
+    - This is "DrPlayer::NewMovie" or linked movie creation.
+
+  Ordinal_85(param_1, param_2) - Dispose sub-player
+    - Calls Ordinal_98 (stop), then clears the player, frees score.
+    - This is "DrPlayer::DisposeMovie".
+
+  Ordinal_86(param_1, param_2, param_3) - Set movie property
+    - Accesses *(param_1 + 0xc) which is the score handle.
+    - Calls FUN_68094890 (set property) and FUN_6805ea70.
+
+  Ordinal_87(param_1, param_2) - Set user data on player
+    - Sets param_1[10] = param_2.
+
+  Ordinal_88(param_1, param_2, param_3, param_4, param_5, param_6, param_7, param_8)
+    - Open/switch to a new movie file.
+    - Calls FUN_68096b00 (load movie), Ordinal_118 (get display),
+      various stage setup functions, Ordinal_120 (get error text).
+    - This is "DrPlayer::OpenFile" or "SwitchMovie".
+
+  Ordinal_89(param_1, param_2) - Play/start movie
+    - Sets frame property (Ordinal_152 with 0x400 = play flag).
+    - Calls Ordinal_136 (set dirty), Ordinal_58 (get frame),
+      Ordinal_75 (set frame), Ordinal_143 (reset), Ordinal_54 (get media),
+      Ordinal_145 (step), Ordinal_46 (unpause).
+    - This is "DrPlayer::Play".
+
+  Ordinal_90(param_1, param_2, param_3, param_4) - Execute Lingo command
+    - Calls FUN_680924b0 (enter script mode), then Ordinal_120 (resolve
+      handler name from string param_3).
+    - This is "DrPlayer::EvalScript" or "SendLingoMessage".
+
+  Ordinal_91(param_1, param_2, param_3) - Dispatch event to handlers
+    - Complex event routing: checks for plugins (FUN_6805f180),
+      dispatches to sprite behaviors (FUN_6805f270), then falls through
+      to FUN_6800a1d0 (main event handler with switch on event type).
+    - This is "DrPlayer::HandleEvent".
+
+  Ordinal_92(param_1, param_2) - Set callback handler
+    - Sets param_1[8] = param_2.
+
+  Ordinal_93(param_1, param_2, param_3, param_4, param_5) - Execute script
+    - Calls FUN_68092a20 (run script) or FUN_68092ac0 (run and get result).
+    - Has pause-check (param_1[9]).
+    - This is "DrPlayer::DoScript" or "CallHandler".
+
+  Ordinal_94(param_1) -> int - Get and clear exit code
+    - Returns param_1[6] and sets it to 0.
+    - This is "DrPlayer::GetExitCode".
+
+  Ordinal_95(param_1) - Force stage update/redraw
+    - Calls Ordinal_152 with 0x3400 (full redraw flag).
+    - This is "DrPlayer::ForceUpdate".
+
+  Ordinal_96(param_1) - Pause playback
+    - Calls Ordinal_46(score, 0) to pause.
+    - Sets state to 1 (paused), calls FUN_68096240.
+    - This is "DrPlayer::Pause".
+
+  Ordinal_97(param_1, param_2, param_3, param_4, param_5, param_6) - Idle/step
+    - The main idle processing function.
+    - Calls Ordinal_107 (process timers), FUN_68092d10 (check state),
+      Ordinal_145/147/143 (step/advance score).
+    - Returns updated event info.
+    - This is "DrPlayer::Idle" (the core of the event loop).
+
+  Ordinal_98(param_1, param_2) - Stop playback
+    - Checks state is paused (1), then: show cursor (Ordinal_66),
+      optional display update (FUN_6805edd0), Ordinal_46(score, 1) to
+      set stopped state, fires notification (Ordinal_108).
+    - This is "DrPlayer::Stop".
+
+Probable MOA interface: DrPlayer / IMoaDrPlayer
+This is the main Director Player API. The ordinals map closely to the
+documented DrPlayer methods from the Director XDK.
+
+================================================================================
+6. ORDINALS 100-147: Extended Player/Movie Control
+================================================================================
+
+These provide additional movie query and manipulation capabilities, often
+wrapping the core ordinals 45-60 with a player-context check.
+
+  Ordinal_100(param_1, param_2) - Get movie info via player
+    - Checks player is valid, delegates to Ordinal_45(param_1[3], param_2).
+    - Wrapper: DrPlayer::GetMovieInfo.
+
+  Ordinal_101(param_1, param_2, param_3) - Get cast member name by index
+    - Looks up cast member at index param_1 in the score's cast list.
+    - Uses FUN_6802fd50/FUN_6802fb00 for cast data access.
+
+  Ordinal_102 (at line 132834) - Large function, likely cast/score query.
+
+  Ordinal_103 (at line 95777) - Related to stage/display.
+
+  Ordinal_104 (at line 149648) - Movie operation.
+
+  Ordinal_105(param_1) -> int - Save movie / commit changes
+    - Calls Ordinal_98 (stop), FUN_68091db0 (save), then marks dirty.
+    - This is "DrPlayer::Save".
+
+  Ordinal_106(param_1, param_2) - Get media/bitmap handle
+    - Reads value from piVar[1] + 0xb8 (the bitmap/offscreen buffer).
+    - Used to get the movie's offscreen image for external rendering.
+
+  Ordinal_107(param_1) - Process timers and scheduled events
+    - Iterates timer list at offset 0x358, fires expired timers.
+    - This is the timer subsystem processor.
+
+  Ordinal_108 (at line 144679) - Fire notification/event
+    - Used throughout to broadcast state changes (e.g., 0x00=state,
+      0x11=movie, 0x13=frame, 0x14=idle, 0x1f=enable/disable).
+
+  Ordinal_109() - Get global app instance
+    - Returns DAT_681956e0 (the global Director app handle).
+
+  Ordinal_112 (at line 152670) - Create/get display object.
+
+  Ordinal_113(param_1, param_2) - Dispose display/cleanup
+    - Frees the object at param_1 + 0x10, calls FUN_6809ae10.
+
+  Ordinal_118 - Get display/stage pointer from score
+    - Heavily referenced: used to get the rendering context.
+
+  Ordinal_119 (at line 146715) - Score operation.
+  Ordinal_120 - Resolve handler/error string from name.
+  Ordinal_121 (at line 146844) - Score/Lingo operation.
+
+  Ordinal_132 (at line 146644) - Score operation.
+  Ordinal_133(param_1) - Lightweight accessor (score lock check).
+  Ordinal_134 (at line 146997) - Score operation.
+  Ordinal_135(param_1) - Reset/clear cast thumbnails
+    - Calls FUN_68086f20 with null.
+  Ordinal_136(param_1, param_2) - Set dirty/modified flag
+    - Calls FUN_68083990.
+  Ordinal_137 (at line 147245) - Extended score operation.
+  Ordinal_138 (at line 146242) - Score operation.
+  Ordinal_139 (at line 146334) - Score operation.
+
+  Ordinal_142(param_1, param_2) - Check/validate cast member
+    - Tests bit 0x08 in the movie byte flags, calls FUN_68083980.
+
+  Ordinal_143(param_1, param_2) - Reset sprite/frame state
+    - Resets bytes at offsets 0x5c-0x5f. Called by Ordinal_89 (play).
+
+  Ordinal_145 (referenced) - Step/advance score by one frame
+    - Called by Ordinal_97 with timing parameter.
+
+  Ordinal_147 (referenced) - Wait for specific frame condition
+
+  Ordinal_152(param_1, param_2, param_3) - Set movie property flags
+    - Writes property flags to the movie's internal state.
+    - param_2 values: 0x400=play, 0x1000=frame-step, 0x2400=switch,
+      0x3400=full-redraw.
+    - Calls FUN_680d1f10, FUN_680847f0, FUN_68083960.
+
+  Ordinal_154(param_1, param_2) - Get total frame count
+    - Reads from the movie structure at offset 0x28 in channel data.
+
+  Ordinal_156-159 - Additional frame/sprite property accessors.
+
+  Ordinal_161(param_1, param_2, param_3) - Set movie property at 0x674
+  Ordinal_162(param_1, param_2) - Lightweight accessor
+  Ordinal_163(param_1, param_2) - Get sprite dimension info
+  Ordinal_164(param_1, param_2) - Get sprite position info
+  Ordinal_165(param_1, param_2, param_3) - Get sprite property
+  Ordinal_166-169 - Additional sprite/stage queries
+
+  Ordinal_176(param_1) - Lightweight accessor (no-op in release build)
+  Ordinal_178(param_1) - Lightweight accessor (no-op in release build)
+  Ordinal_183(param_1, param_2, param_3) - Get sprite rect/bounds
+  Ordinal_184(param_1, param_2, param_3, param_4) - Get channel rect
+  Ordinal_185(param_1, param_2) - Set palette/color map
+  Ordinal_186() - Get screen depth/resolution info
+  Ordinal_187(param_1) - Lightweight accessor
+  Ordinal_188(param_1) - Movie display property
+  Ordinal_189(param_1, param_2) - Get extended sprite info
+
+Probable MOA interface: Extended DrMovie / DrPlayer helpers
+These are the expanded API surface for movie/score query and manipulation.
+Many are simple wrappers around internal subsystem calls with proper
+critical-section management.
+
+================================================================================
+7. SUPPORTING ORDINAL GROUPS
+================================================================================
+
+--- Ordinals 900-950: Player State/Config ---
+  Ordinal_921(param_1, param_2) - Enable/disable input (suspend mode)
+    - Toggles param_1[9] flag. Calls FUN_6805e9f0 to update the
+      stage's input acceptance state.
+  Ordinal_922(param_1) -> bool - Is player in standalone/projector mode?
+    - Returns (*(param_1 + 0x24) == 0).
+  Ordinal_944(param_1) - Reset/release stage
+  Ordinal_945(param_1, param_2) - Handle menu commands
+    - Switch on param_2 for menu items (0xc-0x25 = undo/cut/copy/paste/
+      select-all etc.). Dispatches via FUN_68064bd0/FUN_68064c30.
+  Ordinal_946 - Toggle menu bar visibility
+
+--- Ordinals 1100-1131: Memory/Handle Manager ---
+  Ordinal_1110(param_1) - Check/acquire lock for handle operations
+  Ordinal_1111(param_1, param_2) - Allocate new memory handle
+  Ordinal_1113(param_1) - Free handle
+  Ordinal_1114(param_1) - Lock handle and return pointer
+  Ordinal_1115(param_1) - Unlock handle
+  Ordinal_1116(param_1) - Get handle size
+  Ordinal_1117(param_1, param_2) - Resize handle
+  Ordinal_1125 - Release/dispose object
+  Ordinal_1128 - memcpy
+  Ordinal_1129 - memmove
+  Ordinal_1130 - memset to zero
+  Ordinal_1131 - memcmp
+
+These are the low-level memory management primitives used by the entire DLL.
+
+--- Ordinals 2330/2331: Critical Section ---
+  Ordinal_2330() - Enter critical section (EnterCriticalSection)
+  Ordinal_2331() - Leave critical section (LeaveCriticalSection)
+
+Used throughout as the threading synchronization mechanism.
+
+--- Ordinals 1500-1543: String/Formatting ---
+  Ordinal_1533 - strtod (string to double)
+  Ordinal_1534 - snprintf for int64
+  Ordinal_1539 - snprintf for float
+  Ordinal_1542/1543 - Get/format locale info
+
+--- Ordinals 1600-1690: GDI/Bitmap Operations ---
+  Ordinal_1600 - CreateCompatibleDC
+  Ordinal_1601 - DeleteDC
+  Ordinal_1604 - SelectObject (bitmap into DC)
+  Ordinal_1610 - GetDIBits or similar
+  Ordinal_1616 - StretchBlt / BitBlt
+  Ordinal_1650 - CreateDIBSection
+  Ordinal_1653 - DeleteObject (bitmap)
+  Ordinal_1656 - GetObject (bitmap info)
+  Ordinal_1660 - Encode to clipboard format (0x50494348 = "PICH")
+  Ordinal_1684 - Premultiply alpha
+
+--- Ordinals 2040-2076: External File/Movie Loading ---
+  Ordinal_2040 - Get bitmap data from media handle
+  Ordinal_2041 - Release bitmap data
+  Ordinal_2042 - Query interface on media object
+  Ordinal_2070 - Register search path
+  Ordinal_2071 - Initialize movie loader
+  Ordinal_2072 - Dispose movie loader
+  Ordinal_2076 - Open/load movie from file path
+
+================================================================================
+CROSS-REFERENCE PATTERNS
+================================================================================
+
+1. Player lifecycle:
+   Ordinal_80 (init) -> Ordinal_82 (open) -> Ordinal_89 (play)
+   -> Ordinal_97/78 (idle loop) -> Ordinal_98 (stop) -> Ordinal_83 (close)
+   -> Ordinal_81 (dispose)
+
+2. Movie query chain:
+   Ordinal_100 -> Ordinal_45 -> movie descriptor -> movie data at offset 0x28
+
+3. Event processing:
+   Ordinal_78 (outer loop) -> Ordinal_97 (idle step) -> Ordinal_91 (dispatch)
+   -> FUN_6800a1d0 (switch on event type: mouse, key, menu, etc.)
+
+4. Frame navigation:
+   Ordinal_79 (step by N) -> Ordinal_58 (get frame) + Ordinal_154 (get max)
+   -> Ordinal_49 (go to frame) -> FUN_680d1fc0 (internal set)
+
+5. The "param_1 + 0x20" pattern in ordinals 45-60 accesses the "score
+   movie info" structure. This is the central data structure for a loaded
+   movie, containing at various offsets:
+   - 0x04: sound/media subsystem
+   - 0x08: stage/display object
+   - 0x1c: last render info
+   - 0x28: movie properties (0x418 bytes)
+   - 0x46c: cast data handle
+   - 0x48c-0x496: dimensions
+   - 0x4b8-0x500: extended properties
+   - 0x5f9: option flags
+   - 0x670-0x678: playback settings
+   - 0x67c: loop flag
+
+================================================================================
+END OF ANALYSIS
+================================================================================

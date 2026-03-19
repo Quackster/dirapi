@@ -1,0 +1,312 @@
+DIRAPI.DLL DISPATCH AND METHOD ROUTING ANALYSIS
+=================================================
+
+Source file: ghidra_output/decompiled_functions.c
+Total functions decompiled: 8,395
+Total lines: 374,558
+Total switch case statements: 4,481
+
+============================================================
+1. OVERALL ARCHITECTURE
+============================================================
+
+This is NOT a Director Xtra DLL. This is the CORE Director runtime engine
+(dirapi.dll). It implements the RIFX/DIR file format parser, the Lingo
+scripting engine, the JavaScript engine, the property dispatch system,
+the Xtra loading infrastructure, and the cast member management system.
+
+There is NO single "Lingo method dispatch table" with string comparisons
+like "setPixels", "getPixels", "applyFilter", etc. Those methods belong
+to individual Xtras (separate DLLs), not to dirapi.dll itself.
+
+Instead, dirapi.dll uses a NUMERIC PROPERTY ID DISPATCH system. Properties
+and methods are identified by integer IDs (not strings), and dispatch is
+done via large switch statements on these numeric IDs.
+
+============================================================
+2. EXPORTED ORDINALS (Xtra/RIFX API Interface)
+============================================================
+
+The DLL exports functions via ordinals, not named exports. Key low-numbered
+ordinals form the core RIFX file I/O interface:
+
+  Ordinal_10 (line 2971, addr 0x68003220): Create/open a RIFX container.
+      Creates a new RIFX file structure with FourCC 0x4D563933 ("MV93").
+      Allocates 0xB4 bytes for the container object.
+
+  Ordinal_11 (line 3029, addr 0x68003320): Close/release a RIFX container.
+
+  Ordinal_12 (line 4672, addr 0x68004520): Copy chunks between containers.
+
+  Ordinal_13 (line 2448, addr 0x68002A20): Save/flush a RIFX container.
+      Iterates all chunks, writes modified ones. Calls FUN_680018A0 which
+      constructs a RIFX header: {0x52494658 (RIFX), size, 0x696D6170 (imap)}.
+
+  Ordinal_14 (line 5283, addr 0x68005250): Get container status/info.
+
+  Ordinal_15 (line 3450, addr 0x68003460): Get last error code.
+
+  Ordinal_16 (line 4903, addr 0x68004840): Read chunk data.
+
+  Ordinal_17 (line 3743, addr 0x68003580): Find chunk by FourCC type.
+      Searches for chunks with a given type code (e.g., 0x4B45592A = "KEY*").
+
+  Ordinal_18 (line 4789, addr 0x680047D0): Write chunk data.
+
+  Ordinal_19 (line 1658, addr 0x68002000): Create/add a new chunk.
+      Creates a chunk entry with a given FourCC type code.
+
+  Ordinal_20 (line 2407, addr 0x68002900): Set chunk type.
+
+  Ordinal_21 (line 1836, addr 0x68002240): Read/retrieve a chunk.
+
+  Ordinal_22 (line 4700): Additional chunk operation.
+  Ordinal_23 (line 4746): Additional chunk operation.
+
+Higher ordinals (35-39, 45-77, 78-109, etc.) implement the Lingo runtime,
+property system, cast member management, and various subsystems. Ordinals
+in the 100-500 range cover the movie/score/sprite/sound systems. Ordinals
+in the 900-984 range are thunk functions. Ordinals 1000+ (approximately
+600 of them starting at line 349578) are imported API thunks from other
+Director DLLs.
+
+============================================================
+3. FOURCC (4-CHARACTER CODE) CONSTANTS
+============================================================
+
+The following FourCC codes are used throughout for Director file format:
+
+  Container types:
+    0x52494658 = "RIFX"  - Big-endian Director file container
+    0x4647444D = "FGDM"  - Director movie container (alternative)
+    0x46474443 = "FGDC"  - Director cast library container (alternative)
+    0x4D563933 = "MV93"  - Movie Version 93 (standard Director movie format)
+
+  Chunk types:
+    0x696D6170 = "imap"  - Initial memory map (first chunk in RIFX)
+    0x6D6D6170 = "mmap"  - Memory map (chunk index)
+    0x6A756E6B = "junk"  - Padding/junk chunk
+    0x66726565 = "free"  - Free/deleted chunk
+    0x4B45592A = "KEY*"  - Key table (maps chunk resources)
+    0x43415374 = "CASt"  - Cast member data
+    0x4C6E616D = "Lnam"  - Lingo name table
+    0x4C736372 = "Lscr"  - Lingo script data
+    0x4C637478 = "Lctx"  - Lingo context
+    0x736E6420 = "snd "  - Sound data chunk
+
+Key dispatch function for chunk type handling:
+  FUN_680031E0 (line 2950, addr 0x680031E0):
+    Maps FourCC chunk types to handler vtable pointers:
+      "RIFX" -> PTR_FUN_68188084 (RIFX container handler)
+      "mmap" -> PTR_FUN_68188070 (memory map handler)
+      "junk" -> PTR_FUN_6818805C (junk chunk handler)
+      default -> PTR_FUN_68188048 (generic chunk handler)
+
+============================================================
+4. PROPERTY DISPATCH SYSTEM (NUMERIC ID-BASED)
+============================================================
+
+Director does NOT dispatch Lingo properties/methods by string name at
+runtime. Instead, it uses a two-phase system:
+
+Phase 1 - String to ID Resolution:
+  FUN_68031CA0 (line 49954, addr 0x68031CA0):
+    Core symbol table lookup. Takes a string and its length, hashes it
+    via FUN_68039820, then looks up in FUN_680533F0. Returns an integer
+    property ID.
+
+  FUN_68038D10 (line 56966, addr 0x68038D10):
+    Convenience wrapper around FUN_68031CA0. Calculates strlen first,
+    then calls FUN_68031CA0. Used for property name -> ID conversion.
+    Examples seen:
+      FUN_68038d10(param_1, "width")
+      FUN_68038d10(param_1, "height")
+      FUN_68038d10(param_1, "directToStage")
+      FUN_68038d10(param_1, "antiAliasThreshold")
+      FUN_68038d10(param_1, "is3dCastMember")
+      FUN_68038d10(param_1, "Compare")
+
+Phase 2 - Numeric ID Dispatch:
+  Hundreds of switch statements dispatch on numeric property IDs.
+  The param_3 or param_4 parameter typically carries the property ID.
+  Common property ID ranges observed:
+
+    0x39-0x79: Boolean properties (e.g., visibility, editability)
+    0x48-0x58: Position/dimension properties (locH, locV, width, height)
+    0xBC: Rectangle property (rect)
+    0x99: Point property
+    0x139: Byte-sized properties
+    0x168-0x16C: Flag properties
+    0x1A3-0x1BC: Capability properties
+    0x1AF-0x1B6: Size/format properties
+    0x1E2-0x1F5: Point properties
+    0x338: Named properties
+    0x35B: Rectangle with set support
+    0x3D2-0x3D4: Float properties
+
+  Major property dispatch functions:
+    FUN_6800D7B0 (line 14548): Switch on param_3, handles properties
+        0x1A3, 0x1A4, 0x1A6, 0x1A7, 0x1A9, 0x1BC.
+    FUN_6800DA30 (line 14670): Large dispatch with nested if-else and
+        switch on param_3, handles 0x39-0x35B range.
+    FUN_6800D990 (line 14635): Handles float properties 0x3D2-0x3D4.
+
+  The pattern in each case is:
+    if (param_2 == 0) -> GET property (read into param_4 output buffer)
+    if (param_2 != 0) -> SET property (parse param_4, write to object)
+
+============================================================
+5. LINGO OBJECT TYPE REGISTRATION
+============================================================
+
+FUN_6802CF20 (line 43876, addr 0x6802CF20):
+  Registers Lingo object types for the "_movie" scope. This creates
+  accessor objects for Director's core types:
+
+    "member"  -> type ID 0x58  (cast members)
+    "castLib" -> type ID 0x68  (cast libraries)
+    "script"  -> type ID 0x7B  (scripts)
+    "sprite"  -> type ID 0x2E  (sprites)
+    "channel" -> type ID 0x5FD (channels)
+
+  Additional registrations elsewhere:
+    "sound"   (line 44224)
+    "window"  (line 44228)
+    "xtra"    (line 44232)
+
+  Other registered global objects:
+    "_movie_"  (line 28105)
+    "_global"  (line 40691)
+    "_menuBar" (line 40706)
+    "_player"  (line 43939)
+
+  FUN_6811E190 is the property/method registration function.
+  FUN_6811E060 creates scope objects.
+  FUN_6811F610 attaches vtables to scope objects.
+
+============================================================
+6. XTRA INTERFACE SYSTEM
+============================================================
+
+dirapi.dll provides the infrastructure for loading and communicating with
+Xtras through a COM-like vtable interface:
+
+  Vtable call pattern (seen throughout):
+    (**(code **)(*object_ptr + OFFSET))(object_ptr, type, buffer, size, "PropertyName")
+
+  Common vtable offsets:
+    +0x14: Query/get property by name (most common)
+    +0x18: Set property by name
+    +0x1C: Write operation
+    +0x28: Enumerate operation
+
+  Xtra capability properties queried:
+    "Speed"     - Processing speed capability
+    "Formats"   - Supported media formats
+    "DirTypes"  - Director type support
+    "ClassID"   - COM class identifier
+    "FileExts"  - Supported file extensions
+    "FileTypes" - Supported file type codes
+    "UnderstoodReceptors" - Supported message types
+    "actorType" - Actor type identifier
+    "displayNameString" - Human-readable name
+    "symbolString" - Symbol identifier
+    "assetCaps" - Asset capabilities
+    "safeForShockwave" - Shockwave safety flag
+
+  FUN_68083BB0 (line 132912): Xtra method invocation wrapper.
+  Used to call methods on Xtra objects by name string:
+    "Pause", "Resume", "Suspend", "IsPaused", "IsBusy", "BreakLoop",
+    "mostRecentCuePoint", "IsPastCuePoint"
+
+============================================================
+7. JAVASCRIPT ENGINE
+============================================================
+
+FUN_68138710 (line 316089, addr 0x68138710):
+  JavaScript atom/symbol registration function. Takes (context, name,
+  length, flags). Used to build the JavaScript runtime atom table.
+
+  A large initialization chain (lines 316553-316706) registers all
+  built-in JavaScript atoms in a deeply nested if-chain. Each atom is
+  stored at a sequential offset in a table (piVar3[0x17] through
+  piVar3[0x30]):
+
+    Built-in types: "Arguments", "Array", "Boolean", "Call", "Date",
+        "Error", "Function", "Math", "Number", "Object", "RegExp",
+        "Script", "String"
+
+    Function properties: "anonymous", "arguments", "arity", "callee",
+        "caller", "prototype", "constructor"
+
+    Object properties: "__count__", "eval", "get", "getter", "index",
+        "input", "length", "name", "__parent__", "__proto__", "set",
+        "setter"
+
+    Methods: "toSource", "toString", "toLocaleString", "valueOf"
+
+  Additional JS methods registered elsewhere:
+    "lastMatch" / "$&", "lastParen" / "$+",
+    "leftContext" / "$`", "rightContext" / "$'"  (RegExp)
+    "toUTCString" / "toGMTString"  (Date aliases)
+
+============================================================
+8. ERROR CODE TRANSLATION
+============================================================
+
+FUN_68005300 (line 5400, addr 0x68005300):
+  Translates internal Director error codes (negative COM-style HRESULTs)
+  to dirapi.dll error codes:
+
+    -0x7FFBFFFF -> -0x32  (general error)
+    -0x7FFBFFFE -> -0x6C  (out of memory)
+    -0x7FFBFFFD -> 0x1F8  (file not found)
+    -0x7FFBFFFC -> 0x1F9  (file access error)
+    -0x7FFBFFFB -> 0x1FA  (disk full)
+    -0x7FFBFC7C -> -0x3B  (invalid argument)
+    etc.
+
+============================================================
+9. LOCALIZATION SYSTEM
+============================================================
+
+Language dispatch (around line 168651):
+  Maps language IDs to strings via Ordinal_1203:
+    "Director", "English", "Japanese", "French", "German", "Other",
+    "Korean", "Portuguese", "Italian", "Spanish", "Swedish", "Chinese",
+    "Arabic", "Hebrew"
+
+============================================================
+10. RUNTIME MODE DETECTION
+============================================================
+
+The DLL distinguishes between runtime modes using string comparisons:
+    "Author"    - Director authoring environment
+    "Plugin"    - Shockwave browser plugin
+    "Projector" - Standalone projector
+    "Trial"     - Trial version
+    "Internal"  - Internal/debug mode
+
+These are checked via Ordinal_1206 (string comparison) and
+Ordinal_1208 (string prefix check).
+
+============================================================
+SUMMARY
+============================================================
+
+dirapi.dll is the core Director runtime, not an Xtra. It does not contain
+the specific Lingo method strings like "setPixels", "getPixels",
+"applyFilter", "perlinNoise", "openURL", or "tapGesture" -- those would
+be in individual Xtra DLLs (e.g., an imaging Xtra, a network Xtra, etc.).
+
+The DLL's dispatch architecture is:
+  1. RIFX file I/O via exported ordinals 10-23
+  2. Chunk type routing via FourCC codes and FUN_680031E0
+  3. Property access via numeric ID switch statements (not string dispatch)
+  4. Xtra communication via COM-like vtable calls with string property names
+  5. JavaScript atom registration via FUN_68138710
+  6. Lingo object type registration via FUN_6811E190
+
+The numeric property IDs are resolved from strings at initialization time
+by FUN_68031CA0/FUN_68038D10 (symbol table hash lookup), then all runtime
+dispatch uses the integer IDs in switch statements for performance.

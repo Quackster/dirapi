@@ -1,0 +1,323 @@
+================================================================================
+DIRAPI.DLL - Entry Point and Low-Ordinal Function Analysis
+================================================================================
+
+Generated from Ghidra decompilation of dirapi.dll
+Total functions in decompiled output: 8395
+Total ordinal exports found: 955
+
+================================================================================
+1. DLL ENTRY POINT
+================================================================================
+
+Address: 0x68001388 - entry()
+  - Standard MSVC DLL entry point (Visual Studio 2010 Release)
+  - Calls ___security_init_cookie() on DLL_PROCESS_ATTACH (reason == 1)
+  - Then delegates to ___DllMainCRTStartup() at 0x68001272
+
+FUN_68001000 (address 0x68001000) is the actual DllMain logic:
+  - On DLL_PROCESS_ATTACH (param_2 == 1): stores the hModule in DAT_681956e0
+  - Always returns 1 (success)
+  - This is a minimal DllMain -- the DLL does NOT do heavy initialization at load time
+
+The CRT startup chain is:
+  entry() -> ___DllMainCRTStartup() -> __CRT_INIT@12() -> FUN_68001000()
+
+================================================================================
+2. LOW ORDINAL FUNCTIONS (10-23) - RIFF/IFF File I/O Interface
+================================================================================
+
+These ordinals form the core IFF (Interchange File Format) / RIFF container
+manipulation API. This is NOT a MOA Xtra interface -- it is a low-level
+chunked-file I/O library used by Director internally.
+
+Ordinal 10 - Address 0x68003220 - "MIO_Open" / Create file handle
+  Signature: void Ordinal_10(undefined4 *param_1, undefined4 param_2, int param_3)
+  - Calls Ordinal_2330() (likely a critical section enter / mutex lock)
+  - Allocates 0xB4 bytes via Ordinal_1124 (malloc-like)
+  - Allocates 0x18 bytes via Ordinal_1111 (handle alloc)
+  - Stores file reference (param_2) at offset 0, stream handle at offset 7
+  - Sets initial slot count (param_3, minimum 3) at offset 9
+  - Calls FUN_68003160 and FUN_68003110 (likely initialize + unlock)
+  - Calls Ordinal_2331() (critical section leave)
+  - The 0xB4-byte structure is the main "MIO file object"
+
+Ordinal 11 - Address 0x68003320 - "MIO_Close" / Destroy file handle
+  Signature: void Ordinal_11(int param_1)
+  - Cleans up the stream at offset +4 via FUN_68005b50
+  - Cleans up handle at offset +0x1c via FUN_6802e1a0
+  - Frees the object via Ordinal_1125 (free-like)
+
+Ordinal 12 - Address 0x680048b0 - "MIO_SetFile" / Associate file with handle
+  Signature: void Ordinal_12(int *param_1, int *param_2, int param_3, int param_4)
+  - Calls FUN_68005bc0 to validate/resolve the file reference
+  - If param_4 != 0: calls FUN_68002430 (open for write?)
+  - If param_4 == 0: calls FUN_68003820 (open for read?)
+
+Ordinal 13 - Address 0x68002a20 - "MIO_Read" / Read/parse all chunks
+  Signature: int Ordinal_13(int param_1, undefined4 param_2)
+  Size: 346 bytes (largest of the low ordinals -- main parse loop)
+  - Returns 0xCA if stream (offset +4) is null
+  - Checks dirty flag at slot 2, iterates slots 3..N
+  - For each dirty slot: dispatches to FUN_680022e0 or FUN_68002460
+  - Compares chunk type against 0x736e6420 ("snd " -- sound chunk FourCC!)
+  - Calls FUN_68001a50 with param_2 (progress callback?)
+  - After all chunks written, calls FUN_680057a0 then iterates with FUN_68001e90
+
+Ordinal 14 - Address 0x68005140 - "MIO_Save" / Flush and finalize
+  Signature: int Ordinal_14(int *param_1)
+  - Calls FUN_68003ed0 to finalize
+  - Calls FUN_68005000 (flush?)
+  - Calls FUN_680058a0 to commit stream
+  - Checks for magic values 0x4647444d ("MDGF" = "FGDM" little-endian)
+    and 0x46474443 ("CDGF" = "FGDC" little-endian) for special handling
+  - On success calls FUN_68006200, FUN_6809cb50, FUN_680082d0
+
+Ordinal 15 - Address 0x680038a0 - "MIO_GetError" / Get last error
+  Signature: undefined4 Ordinal_15(int param_1)
+  - Simple accessor: returns *(param_1 + 8) or 0 if param_1 is null
+  - Offset +8 is the error/status field in the file object
+
+Ordinal 16 - Address 0x68004b20 - "MIO_ReadChunk" / Read a specific chunk
+  Signature: int Ordinal_16(int *param_1, int param_2)
+  Size: 360 bytes
+  - Validates slot param_2 via FUN_68003360
+  - Uses FUN_680031e0 to get chunk-type dispatch table (see vtable section)
+  - Calls handler[0] (create/alloc) then handler[3] (read/decode)
+  - Updates progress via FUN_68003c90
+  - Returns allocated chunk data pointer or 0 on error
+  - Checks for FGDM/FGDC magic for alternate path
+
+Ordinal 17 - Address 0x68003be0 - "MIO_FindChunk" / Find chunk by FourCC
+  Signature: int Ordinal_17(int param_1, int param_2)
+  - Iterates slots 3..N looking for matching FourCC (param_2)
+  - If param_2 == 0: matches any non-deleted slot
+  - Returns slot index or -1 if not found
+
+Ordinal 18 - Address 0x680049e0 - "MIO_GetChunkInfo" / Get chunk offset+size
+  Signature: int Ordinal_18(int param_1, int param_2, undefined4 *param_3)
+  - Looks up slot param_2, returns size at offset+4 into *param_3
+  - Returns file offset (offset+8) + 8 (accounting for chunk header)
+
+Ordinal 19 - Address 0x68002000 - "MIO_AddChunk" / Add new chunk slot
+  Signature: int Ordinal_19(int param_1, undefined4 param_2)
+  - Locks file object, adds new slot via FUN_68002fb0
+  - Sets FourCC = param_2, size = 0, offset = -1, data = 0, count = 1
+  - Marks slot 2 (mmap) as dirty
+
+Ordinal 20 - Address 0x680029a0 - "MIO_SetChunkData" / Write data to chunk
+  Signature: int Ordinal_20(int param_1, int param_2, undefined4 param_3)
+  - Validates slot, gets data size via Ordinal_1116 (handle size)
+  - Locks handle via Ordinal_1114, copies data via FUN_680027c0
+  - Unlocks via Ordinal_1115, then calls FUN_68002880
+
+Ordinal 21 - Address 0x68002240 - "MIO_WriteHeader" / Update file header
+  Signature: int Ordinal_21(int param_1)
+  - Gets total file size via FUN_68005f00
+  - Updates slot 2 with the computed size via FUN_680021d0
+
+Ordinal 22 - Address 0x680048f0 - "MIO_UpdateChunkOffset"
+  Signature: void Ordinal_22(uint param_1, int param_2)
+  - Gets internal stream handle via FUN_6811e680
+  - Gets current file size via FUN_680056f0
+  - Pads to even boundary if needed
+  - Updates chunk slot's offset field
+
+Ordinal 23 - Address 0x68004970 - "MIO_ComputeChunkSize"
+  Signature: int Ordinal_23(int param_1, int param_2)
+  - Gets stream handle, gets current file size
+  - Computes chunk size = current_pos - chunk_offset
+  - Stores computed size and clears dirty flag
+
+================================================================================
+3. CHUNK-TYPE DISPATCH TABLE (Vtable-like Structure)
+================================================================================
+
+FUN_680031e0 at 0x680031e0 is the chunk-type dispatcher.
+It maps FourCC values to function pointer tables:
+
+  0x52494658 ("RIFX") -> PTR_FUN_68188084  (RIFX container handler)
+  0x6d6d6170 ("mmap") -> PTR_FUN_68188070  (memory map handler)
+  0x6a756e6b ("junk") -> PTR_FUN_6818805c  (junk/padding handler)
+  default            -> PTR_FUN_68188048  (generic chunk handler)
+
+Each table entry contains function pointers used by Ordinal_16 (ReadChunk):
+  [0] = Create/allocate handler  (called to create chunk data in memory)
+  [1] = (unknown, possibly validate)
+  [2] = GetSize handler          (called by FUN_68003a00)
+  [3] = Read/decode handler      (called to parse chunk data from stream)
+
+These tables are at addresses in the .data section (0x68188048-0x68188084+).
+
+The FGDM (0x4647444d) and FGDC (0x46474443) magic values represent Director
+movie file formats and trigger special code paths throughout the ordinals:
+  - FGDM = likely "MDGF" = Director Movie/Media File (big-endian FourCC)
+  - FGDC = likely "CDGF" = Director Cast File (big-endian FourCC)
+
+When these magic values are detected in the file object's first dword,
+alternate code paths handle Director-specific container features like
+multi-cast libraries and embedded resources.
+
+================================================================================
+4. HANDLE/MEMORY MANAGEMENT ORDINALS (Imported from another DLL)
+================================================================================
+
+The low ordinals heavily use these handle management functions, which are
+thunked imports (6-byte jump stubs at 0x68166DA6+) from another DLL
+(likely IML32.DLL or similar MOA support DLL):
+
+  Ordinal_1111 - Handle_Alloc(size, flags)   -- allocate a relocatable handle
+  Ordinal_1113 - Handle_Free(handle)         -- dispose a handle
+  Ordinal_1114 - Handle_Lock(handle)         -- lock handle, return pointer
+  Ordinal_1115 - Handle_Unlock(handle)       -- unlock handle
+  Ordinal_1116 - Handle_GetSize(handle)      -- get allocated size
+  Ordinal_1124 - Mem_Alloc(size)             -- allocate fixed memory (0xB4 for file objects)
+  Ordinal_1125 - Mem_Free(ptr)               -- free fixed memory
+  Ordinal_1129 - Mem_Copy(dst, src, size)    -- memory copy
+  Ordinal_1130 - Mem_Clear(ptr, size)        -- zero memory
+
+  Ordinal_2330 - Lock_Enter() / Critical section enter
+  Ordinal_2331 - Lock_Leave() / Critical section leave
+
+================================================================================
+5. HIGHER ORDINAL GROUPS
+================================================================================
+
+Ordinals 35-39: Byte-swapping / endian-conversion utilities
+  Ordinal_35: Allocates a handle and stores size header (buffer creation)
+  Ordinal_36: Frees a handle (buffer disposal)
+  Ordinal_37: Complex data conversion (573 bytes) - likely endian swap for
+              structured data with 2-byte and 4-byte fields
+
+Ordinals 62-68, 77-105: Likely Lingo value/data manipulation
+  Located around addresses 0x680A5xxx-0x680A7xxx
+
+Ordinals 78-98: Memory/stream utility layer
+  Located around addresses 0x680A3xxx-0x680A8xxx
+
+Ordinals 981-984: Thunks to Ordinals 2341-2344
+  Simple 6-byte jump stubs, likely compatibility aliases
+
+Ordinals 921-922, 930, 944-945, 950-951, 965-967:
+  Mid-range utilities (likely cast/score manipulation)
+
+Ordinals 1100+, 2000+: MOA runtime support functions
+  These are thunk imports from the MOA runtime DLL
+
+================================================================================
+6. KEY ERROR CODES
+================================================================================
+
+Found in the decompiled code:
+  0x00 = Success (kMoaErr_NoErr)
+  0xCA = Stream not open / no file (202 decimal)
+  0xCB = Invalid slot index / out of range (203 decimal)
+  0xCC = Slot index out of bounds (204 decimal)
+  0xCD = Slot is deleted/invalid (205 decimal)
+  0xCE = Read returned no data / EOF (206 decimal)
+  0xCF = Invalid chunk header (207 decimal)
+  0xD0 = Corrupt data / structure validation failed (208 decimal)
+  0xD1 = Allocation failed (209 decimal)
+  0xD4 = Already in streaming mode (212 decimal)
+  0x1F6 = Partial read / more data available (502 decimal)
+
+================================================================================
+7. KEY STRING REFERENCES
+================================================================================
+
+Director file format strings:
+  "SYSTEM - WIN (DIR 4)" - Platform identification
+  "kMoaCfFormat_snd" - Sound chunk format identifier
+
+Xtra-related strings:
+  "transitionXtraList", "toolXtraList", "mediaXtraList", "scriptingXtraList"
+  "movieXtraList", "xtraList", "_soundXtra"
+  "TextXtra.x32", "Font Xtra.x32", "Shockwave 3d Asset Xtra"
+
+Lingo/scripting strings:
+  "lingo", "romanLingo", "enableFlashLingo"
+  "EvalScript", "function", "repeat"
+  "_movie", "_movie_", "_player", "_system", "_sound", "_mouse"
+  "lcr_StkLoc() returned NULL, lingo script may be corrupted"
+  "lcontext_FileRead: symRef=%d index=%d nameStr=%s sym=%d"
+
+File I/O strings:
+  "openFile", "closeFile", "createFile", "protect", "protected"
+  "readFile", "readLine", "readChar", "readToken"
+
+Score/stage strings:
+  "score", "frame", "sprite", "member", "castLib"
+  "frameCount", "channelCount", "memberCount", "castCount"
+  "castMemberList", "castMemberProperties", "scoreSelection"
+
+Reversed string at 0x68176650:
+  "444224" type encoding followed by reversed identifiers including:
+  "YEKFCRDFCWVlRTXdroS*SACtSACxtcLXtcLmanLCSWVrcsLpamFBLWVLTWVMFWVIFWVLsCMfniC lccnahC"
+  This reverses to: "Channel Clinf CMsLVWFIVWFMVWTLVWLBFmapLscrVWSCLnamLctLtxCASt*SAC*SordXTRlVWCFDRCFKEY"
+  These are Director chunk FourCC codes: KEY*, CASt, VWSC, Lnam, Lctx, Lscr, VWFI, etc.
+
+================================================================================
+8. FILE OBJECT STRUCTURE (0xB4 bytes, from Ordinal_10 allocation)
+================================================================================
+
+Offset  Field               Notes
+------  ------------------  ----------------------------------------
++0x00   magic/FourCC        File type (FGDM, FGDC, or other)
++0x04   stream              File stream handle
++0x08   lastError           Error code (read by Ordinal_15)
++0x0C   (unknown)
++0x10   flags               Parsed/initialized flag
++0x14   streamingState      Used by streaming code
++0x1C   handleData          Secondary handle (freed in Ordinal_11)
++0x20   slotTable           Pointer to chunk slot array
++0x28   handleOffset        For FGDM/FGDC: base offset
++0x2C   chunkInfo           24-byte chunk info block
++0x48   totalHeaderSize     Set during save (Ordinal_13)
++0x4C   progressCallback    Function pointer for progress
++0x50   progressValue       Current progress counter
++0x54   currentSlot         Active slot index (-1 = none)
++0x58   (accessor at FUN_68003900)
++0x5C   interface1          COM-like interface pointer (released via vtable[2])
++0x60   interface2          COM-like interface pointer (released via vtable[2])
++0x68   auxHandle           Auxiliary handle (freed via FUN_6802e1a0)
++0xB0   parentContext       Pointer back to context passed to Ordinal_10
+
+Each chunk slot is a 20-byte (0x14) structure:
+Offset  Field
+------  ------------------
++0x00   FourCC              Chunk type identifier (e.g., 0x736e6420 = "snd ")
++0x04   size                Chunk data size in bytes
++0x08   offset              File offset (-1 = not yet written)
++0x0C   flags               Bit flags: 0x01=dirty, 0x04=deleted, 0x20=compressed,
+                            0x40=decompressed, 0x80=loading, 0x8000=memory-mapped
++0x10   dataPtr             In-memory chunk data pointer (0 = not loaded)
+
+Reserved slots:
+  Slot 0: File header (RIFX)
+  Slot 1: imap (initial map)
+  Slot 2: mmap (memory map / directory)
+  Slots 3+: User data chunks
+
+================================================================================
+9. SUMMARY
+================================================================================
+
+dirapi.dll is the core Director file I/O engine. Ordinals 10-23 form the
+primary IFF/RIFF container manipulation API ("MIO" - Media I/O):
+
+  Open/Close:     Ordinal_10 (open), Ordinal_11 (close), Ordinal_12 (set file)
+  Read/Parse:     Ordinal_13 (read all), Ordinal_16 (read chunk)
+  Write/Save:     Ordinal_14 (save), Ordinal_19 (add chunk), Ordinal_20 (set data)
+  Header:         Ordinal_21 (write header), Ordinal_22 (update offset),
+                  Ordinal_23 (compute size)
+  Query:          Ordinal_15 (get error), Ordinal_17 (find chunk),
+                  Ordinal_18 (get chunk info)
+
+The DLL uses a chunk-type dispatch table at FUN_680031e0 that maps FourCC
+codes (RIFX, mmap, junk) to handler function tables, similar to a vtable.
+
+It imports handle management and synchronization primitives via thunked
+ordinals from the MOA runtime (likely IML32.DLL).
+
+The file format magic values FGDM and FGDC trigger Director-specific code
+paths for movie files and cast library files respectively.

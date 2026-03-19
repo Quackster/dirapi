@@ -1,0 +1,2579 @@
+// String references found in dirapi.dll
+68176624: 444444
+6817662c: mmkey-realurl
+6817663c: 444224
+68176644: 2244444
+68176650: *YEKFCRDFCWVlRTXdroS*SACtSACxtcLXtcLmanLCSWVrcsLpamFBLWVLTWVMFWVIFWVLsCMfniC lccnahC
+681766a8: Formats
+681766b0: Speed
+681766c8: Author
+681766d8: \StringFileInfo\040904b0\FileVersion
+68176700: \StringFileInfo\040904E4\FileVersion
+68176730: InternetGetConnectedState
+6817674c: wininet.dll
+6817675c: CodeHinting.txt
+6817676c: Configuration
+6817677c: screenScale
+68176788: deviceModel
+68176794: stereoscopyParallaxDiff
+681767ac: openURL
+681767b4: handleOpenURL
+681767c4: cancelled
+681767d0: begin
+681767d8: moved
+681767e0: _gyroscope
+681767ec: pinchGesture
+681767fc: rotateGesture
+6817680c: longPressGesture
+68176820: doubleTapGesture
+68176834: tapGesture
+68176840: swipeDownGesture
+68176854: swipeUpGesture
+68176864: swipeLeftGesture
+68176878: swipeRightGesture
+6817688c: registerGesture
+6817689c: pinchScale
+681768ac: hasMoved
+681768b8: lastMoved
+681768c4: alltouches
+681768d0: accelerated
+681768dc: _touches
+681768e8: _accelerometer
+681768f8: isUserEventActive
+6817690c: bgr888
+68176914: rgb888
+6817691c: bgra8888
+68176928: argb8888
+68176934: setPixels
+68176940: getPixels
+6817694c: importByteArrayInto
+68176960: enableSecurityDialog
+68176978: loadPolicyFile
+68176988: sound16
+68176990: sound15
+68176998: sound14
+681769a0: sound13
+681769a8: sound12
+681769b0: sound11
+681769b8: sound10
+681769c0: sound9
+681769c8: byteArray
+681769d4: netByteArrayResult
+681769e8: postNetByteArray
+681769fc: getNetByteArray
+68176a0c: isCharSetInstalled
+68176a20: getSystemCharSet
+68176a34: getInstalledCharSets
+68176a4c: offsets
+68176a54: channelOptions
+68176a64: perlinNoise
+68176a70: matrixNumColumns
+68176a84: matrixNumRows
+68176a94: matrixControl
+68176aa4: gradientControl
+68176ab4: filterRect
+68176ac0: filterType
+68176acc: applyFilter
+68176ad8: filterList
+68176ae4: filter
+68176aec: remapImageToStage
+68176b00: trialTime
+68176b0c: licenseType
+68176b18: directXVersion
+68176b28: flashObject
+68176b3c: jsunload
+68176b48: notifyUser
+68176b54: displaySystemTrayMessage
+68176b74: getLineHeight
+68176b84: transitionXtraList
+68176b98: toolXtraList
+68176ba8: mediaXtraList
+68176bb8: scriptingXtraList
+68176bcc: removeMenuItem
+68176bdc: uninstall
+68176be8: removeMenu
+68176bf4: commandKey
+68176c00: addMenuItem
+68176c0c: prepare
+68176c14: install
+68176c1c: clear
+68176c24: addMenu
+68176c2c: newMember
+68176c38: toSource
+68176c44: windowtype
+68176c50: dragRegionMask
+68176c60: systemTrayTooltip
+68176c74: systemTrayIcon
+68176c84: javaScript
+68176c90: lingo
+68176c98: scriptSyntax
+68176ca8: includevoid
+68176cb4: toString
+68176cc0: _interface
+68176cd4: dispatch
+68176ce0: jobject
+68176ce8: traceScript
+68176cf4: goPrevious
+68176d00: goNext
+68176d08: goLoop
+68176d10: fileFreeSize
+68176d20: fileVersion
+68176d2c: fileSize
+68176d38: aboutInfo
+68176d44: searchPathList
+68176d54: environmentPropList
+68176d68: _global
+68176d70: _menuBar
+68176d7c: _system
+68176d84: _sound
+68176d8c: _mouse
+68176d9c: _movie
+68176da4: _player
+68176dac: scripted
+68176db8: removeScriptedSprite
+68176dd0: makeScriptedSprite
+68176de4: channel
+68176dec: wrapMode
+68176df8: worldTransform
+68176e08: warpMode
+68176e14: waitForNetConnection
+68176e2c: viewV
+68176e34: viewScale
+68176e40: viewPoint
+68176e4c: viewH
+68176e54: vertex
+68176e5c: useHypertextStyles
+68176e74: triggerCallback
+68176e84: topSpacing
+68176e98: textureCoordinateGenerator
+68176ebc: tabCount
+68176ec8: swing
+68176ed0: strokeWidth
+68176edc: strokeColor
+68176ee8: streamName
+68176ef4: streamMode
+68176f00: status
+68176f08: static
+68176f10: stageToFlash
+68176f20: soundChannel
+68176f30: silhouettes
+68176f3c: showProps
+68176f48: setVariable
+68176f54: setPlayList
+68176f60: setNetMessageHandler
+68176f78: setNetBufferLimits
+68176f8c: setFlashProperty
+68176fa0: sendNetMessage
+68176fb0: scaleMode
+68176fbc: savedLocal
+68176fc8: sampleCount
+68176fd8: rightIndent
+68176fe4: rewind
+68176fec: resume
+68176ff4: regPointVertex
+68177008: recordFont
+68177014: rateShift
+68177020: qtUnRegisterAccessKey
+68177038: qtRegisterAccessKey
+6817704c: ptToHotSpotID
+6817705c: percentStreamed
+6817706c: preloadTime
+68177078: preloadBuffer
+68177088: posterFrame
+68177094: pointInHyperlink
+681770a8: playBackMode
+681770b8: percentPlayed
+681770c8: parseUrl
+681770d4: parseString
+681770e4: originV
+681770ec: originPoint
+681770f8: originMode
+68177104: originH
+6817710c: originalFont
+6817711c: numChannels
+68177128: nudge
+68177130: newCurve
+6817713c: mpegLayer
+68177148: moveVertexHandle
+6817715c: moveVertex
+68177168: mouseOverButton
+68177178: mouseLevel
+68177184: modeNormal
+68177190: mode3d
+68177198: meshCount
+681771a4: makeSublist
+681771b0: makeList
+681771bc: loopStartTime
+681771cc: loopsRemaining
+681771dc: loopPositionReset
+681771f0: loopEndTime
+681771fc: loopCount
+68177208: lineColor
+68177214: leftIndent
+68177220: kerningThreshold
+68177234: kerning
+6817723c: isBusy
+68177244: invertMask
+68177250: interval
+6817725c: immoveable
+68177268: imageEnabled
+68177278: ignoreWhitespace
+6817728c: id3tags
+68177294: hyperlinkState
+681772a4: hyperlinks
+681772b0: hyperlinkRange
+681772c0: hyperlinkClicked
+681772d4: hyperlink
+681772e8: hotSpot
+681772f8: highlightStrength
+6817730c: gradientType
+6817731c: goToFrame
+68177328: getRendererServices
+6817733c: getPlaylist
+68177348: getPeerConnectionList
+68177360: getNumberWaitingNetMessages
+6817737c: getNetOutgoingBytes
+68177390: getNetMessage
+681773a0: getNetErrorString
+681773b4: getNetAddressCookie
+681773c8: getHotSpotRect
+681773d8: getErrorString
+681773e8: getError
+681773f4: frameCount
+68177400: flashToStage
+68177410: flashRect
+6817741c: fixedRate
+68177428: fixedLineSpace
+68177438: firstIndent
+68177444: findLabel
+68177450: fillScale
+6817745c: fillOffset
+68177468: fillMode
+68177474: fillDirection
+68177484: fillCycles
+68177490: fillColor
+6817749c: fadeTo
+681774a4: eventPassMode
+681774b4: endColor
+681774c0: enableHotspot
+681774d0: elapsedTime
+681774dc: doneParsing
+681774e8: displayMode
+681774f4: deleteVertex
+68177504: defaultRectMode
+68177514: defaultRect
+68177520: curve
+68177528: cursorSize
+68177534: currentChannel
+68177544: copyrightInfo
+68177554: connectToNetServer
+68177568: collisionData
+68177578: closed
+68177580: clickMode
+6817758c: clearError
+68177598: checkNetMessages
+681775ac: charSpacing
+681775b8: characterSet
+681775c8: castMemberList
+681775d8: buttonsEnabled
+681775e8: bufferSize
+681775f4: broadcastProps
+68177604: breakLoop
+68177610: breakConnection
+68177620: bottomSpacing
+68177630: bitsPerSample
+68177640: bitRate
+68177648: bitmapSizes
+68177654: backgroundColor
+68177664: autoMask
+68177670: attributeValue
+68177680: attributeName
+68177690: antiAliasThreshold
+681776a4: actionsEnabled
+681776b4: getNetText
+681776c0: enableFlashLingo
+681776d4: okToQueryKeyboard
+681776e8: floodFill
+681776f4: osVersion
+68177700: debugPlaybackEnabled
+68177718: active3dRenderer
+6817772c: preferred3dRenderer
+68177740: software
+68177754: sw_directX5_2
+68177764: sw_directX7_0
+68177774: directX5_2
+68177780: directX7_0
+6817778c: directX9
+68177798: sw_openGL
+681777a4: openGL
+681777ac: colorBufferDepth
+681777c0: depthBufferDepth
+681777d4: primitives
+681777e0: modifiers
+681777ec: rendererDeviceList
+68177800: renderer
+6817780c: getHardwareInfo
+6817781c: compressedMedia
+6817782c: pointAt
+68177834: magnitude
+68177840: zAxis
+68177848: yAxis
+68177850: xAxis
+68177858: axisAngle
+68177864: determinant
+68177870: inverse
+68177878: invert
+68177880: identity
+6817788c: square
+68177894: interpolateTo
+681778a4: interpolate
+681778b0: preScale
+681778bc: scale
+681778c4: preRotate
+681778d0: rotate
+681778d8: preTranslate
+681778e8: translate
+681778f4: preMultiply
+68177900: multiply
+6817790c: inker
+68177918: meshDeform
+6817792c: keyframePlayer
+6817793c: bonesPlayer
+68177948: collision
+68177954: particle
+68177960: plane
+68177968: cylinder
+68177978: sphere
+68177980: resolveB
+6817798c: resolveA
+68177998: collisionNormal
+681779a8: pointOfContact
+681779b8: modelB
+681779c0: modelA
+681779c8: level
+681779d8: neighbor
+681779e4: error
+681779ec: subdivision
+681779f8: tension
+68177a00: currentLoopState
+68177a14: playRate
+68177a20: endTime
+68177a28: playList
+68177a34: rotationReset
+68177a44: positionReset
+68177a54: lockTranslation
+68177a64: blendFactor
+68177a70: blendTime
+68177a7c: autoBlend
+68177a88: rootLock
+68177a94: playNext
+68177aa0: removeLast
+68177aac: queue
+68177ab4: creaseAngle
+68177ac0: creases
+68177ac8: boundary
+68177ad4: immovable
+68177ae0: resolve
+68177ae8: setCollisionCallback
+68177b00: density
+68177b08: brightness
+68177b14: useLineOffset
+68177b24: lineOffset
+68177b30: highlightPercentage
+68177b44: shadowPercentage
+68177b58: style
+68177b60: shadowStrength
+68177b70: colorSteps
+68177b7c: nextShader
+68177b88: specular
+68177b94: diffuse
+68177b9c: ambient
+68177ba4: emissive
+68177bb0: shininess
+68177bbc: useDiffuseWithTexture
+68177bd4: renderStyle
+68177be8: specularLightMap
+68177bfc: diffuseLightMap
+68177c0c: glossMap
+68177c18: reflectionMap
+68177c28: blendConstantList
+68177c3c: blendConstant
+68177c4c: blendSourceList
+68177c5c: blendSource
+68177c68: blendFunctionList
+68177c7c: blendFunction
+68177c8c: textureRepeatList
+68177ca0: textureRepeat
+68177cb0: wrapTransformList
+68177cc4: wrapTransform
+68177cd4: textureTransformList
+68177cec: textureTransform
+68177d00: textureModeList
+68177d10: textureMode
+68177d1c: textureList
+68177d28: distribution
+68177d38: region
+68177d40: angle
+68177d48: pathStrength
+68177d60: force
+68177d68: direction
+68177d74: numParticles
+68177d84: maxSpeed
+68177d90: minSpeed
+68177da4: start
+68177dac: tweenMode
+68177dc0: lifeTime
+68177dcc: blendRange
+68177dd8: sizeRange
+68177de4: colorRange
+68177df0: emitter
+68177e00: gravity
+68177e08: texCoords
+68177e14: textureCoordinates
+68177e28: colors
+68177e30: normals
+68177e38: vertices
+68177e44: textureLayer
+68177e54: texCoordList
+68177e64: textureCoordinateList
+68177e7c: colorList
+68177e88: normalList
+68177e94: vertexList
+68177ea0: addVertex
+68177eb4: generateNormals
+68177ec4: allocate
+68177ed0: build
+68177ed8: numSegments
+68177ee4: bottomCap
+68177ef0: topCap
+68177ef8: bottomRadius
+68177f08: topRadius
+68177f14: resolution
+68177f20: endAngle
+68177f2c: startAngle
+68177f38: radius
+68177f40: widthVertices
+68177f50: lengthVertices
+68177f60: heightVertices
+68177f78: front
+68177f88: renderFormat
+68177f98: compressed
+68177fa4: nearFiltering
+68177fb4: quality
+68177fbc: scaleDown
+68177fc8: scaleUp
+68177fd0: source
+68177fe4: decayMode
+68177ff0: clearValue
+68177ffc: clearAtRender
+6817800c: orthoHeight
+68178018: projection
+68178024: fieldOfView
+68178030: projectionAngle
+68178044: hither
+6817804c: rootNode
+68178058: spriteSpaceToWorldSpace
+68178070: worldSpaceToSpriteSpace
+68178088: removeBackdrop
+68178098: addBackdrop
+681780a4: insertBackdrop
+681780b4: removeOverlay
+681780c4: addOverlay
+681780d0: insertOverlay
+681780e0: modelsUnderLoc
+681780f0: modelUnderLoc
+68178100: spotDecay
+6817810c: spotAngle
+68178118: attenuation
+68178124: debug
+6817812c: loadPriority
+6817813c: shaderList
+68178148: resource
+68178154: update
+6817815c: removeModifier
+6817816c: addModifier
+68178178: boundingSphere
+68178188: pointAtOrientation
+6817819c: worldPosition
+681781ac: child
+681781b4: userData
+681781c0: getWorldTransform
+681781d4: registerScript
+681781e4: cloneDeep
+681781f0: clone
+681781f8: isInWorld
+68178204: removeFromWorld
+68178214: addToWorld
+68178220: addChild
+68178238: modifier
+68178244: getBoneId
+68178250: getNextModifier
+68178260: setNextModifier
+68178270: mousePick
+6817827c: timeMS
+68178284: timeFrame
+68178290: animationEnded
+681782a0: animationStarted
+681782b4: collideWith
+681782c0: collideAny
+681782cc: colorBufferRange
+681782e0: depthBufferRange
+681782f4: textureUnits
+68178304: supportedTextureRenderFormats
+68178324: maxTextureSize
+68178334: vendor
+6817833c: present
+68178344: preserveParent
+68178354: preserveWorld
+68178364: constant
+68178370: alpha
+68178378: replace
+68178380: orthographic
+68178390: perspective
+681783ac: gradient
+681783b8: blackAndWhite
+681783c8: keyFrame
+681783d4: bones
+681783dc: useTargetFrameRate
+681783f0: targetFrameRate
+68178400: backdrop
+6817840c: overlay
+68178418: colorBuffer
+68178424: textureRenderFormat
+68178438: newsprint
+68178444: engraver
+68178450: painter
+68178458: fromFile
+68178464: fromCastMember
+68178474: fromImageObject
+68178484: importedFromFile
+68178498: rgba4444
+681784a4: rgba5550
+681784b0: rgba5551
+681784bc: rgba5650
+681784c8: rgba8880
+681784d4: rgba8888
+681784e8: medium
+681784f4: stream
+681784fc: burst
+68178504: gaussian
+68178514: velocity
+68178520: smooth
+68178528: adaptive
+68178534: uniform
+6817853c: world
+6817854c: reflection
+68178558: specularLight
+68178568: diffuseLight
+68178578: wrapSpherical
+68178588: wrapCylindrical
+68178598: wrapPlanar
+681785a4: exponential2
+681785b4: exponential
+681785c0: linear
+681785d8: directional
+681785e4: timeStep
+681785f0: ambientForce
+68178600: cloneMotionFromCastmember
+6817861c: cloneModelFromCastmember
+68178638: loadFile
+68178644: newTask
+6817864c: newParticle
+68178658: newMesh
+68178660: sendEvent
+6817866c: unregisterAllEvents
+68178680: registerForEvent
+68178694: deleteCamera
+681786a4: newCamera
+681786b0: cameraCount
+681786bc: camera
+681786c4: deleteGroup
+681786d0: newGroup
+681786dc: groupCount
+681786e8: group
+681786f0: deleteLight
+681786fc: newLight
+68178708: lightCount
+68178714: light
+6817871c: deleteMotion
+6817872c: newMotion
+68178738: motionCount
+68178744: motion
+6817874c: deleteTexture
+6817875c: newTexture
+68178768: textureCount
+68178778: texture
+68178780: deleteShader
+68178790: newShader
+6817879c: shaderCount
+681787a8: shader
+681787b0: deleteModelResource
+681787c4: newModelResource
+681787d8: modelResourceCount
+681787ec: modelResource
+681787fc: deleteModel
+68178808: newModel
+68178814: modelCount
+68178820: model
+68178828: addCamera
+68178834: state
+6817883c: streamSize
+68178848: bytesStreamed
+68178858: textureMember
+68178868: textureType
+68178874: diffuseColor
+68178884: reflectivity
+68178894: specularColor
+681788a4: directionalPreset
+681788b8: directionalColor
+681788cc: ambientColor
+681788dc: cameraRotation
+681788ec: cameraPosition
+681788fc: animationEnabled
+68178910: uvCoord
+68178918: faceID
+68178920: meshID
+68178928: isectNormal
+68178934: isectPosition
+68178944: distance
+68178950: modelsUnderRay
+68178960: revertToWorldDefaults
+68178978: resetWorld
+68178984: smoothness
+68178990: bevelType
+6817899c: bevelDepth
+681789a8: displayFace
+681789b4: tunnelSteps
+681789c0: tunnelDepth
+681789cc: extrude3d
+681789f4: randomVector
+68178a04: distanceTo
+68178a10: getNormalized
+68178a20: normalize
+68178a2c: perpendicularTo
+68178a3c: crossProduct
+68178a4c: cross
+68178a54: dotProduct
+68178a64: angleBetween
+68178a74: disableImagingTransformation
+68178a94: helpTopic
+68178aa0: _soundXtra
+68178aac: enableInkmodeLimitations
+68178ac8: markerlist
+68178ad4: selectedText
+68178ae4: pointToParagraph
+68178af8: pointToItem
+68178b04: pointToLine
+68178b10: pointToWord
+68178b1c: pointToChar
+68178b28: osLanguage
+68178b34: isOKToAttach
+68178b44: setScriptList
+68178b54: flushInputEvents
+68178b68: linkAs
+68178b70: inlineImeEnabled
+68178b84: editShortcutsEnabled
+68178b9c: movieFileVersion
+68178bb0: createMask
+68178bbc: maskOffset
+68178bc8: maskImage
+68178bd4: darken
+68178bdc: lighten
+68178be4: darkest
+68178bec: subtract
+68178bf8: lightest
+68178c04: backgroundTransparent
+68178c1c: subtractPin
+68178c28: addPin
+68178c38: matte
+68178c40: notGhost
+68178c4c: notReverse
+68178c58: notTransparent
+68178c68: notCopy
+68178c70: ghost
+68178c78: reverse
+68178c80: transparent
+68178c8c: linked
+68178c94: movieImageQuality
+68178ca8: movieImageCompression
+68178ccc: standard
+68178cd8: movieSetting
+68178ce8: imageQuality
+68178cf8: imageCompression
+68178d0c: granularity
+68178d18: itemDescriptionList
+68178d2c: propertyDescriptionList
+68178d44: command
+68178d4c: windowBehind
+68178d5c: windowInFront
+68178d6c: comments
+68178d78: modifiedBy
+68178d84: modifiedDate
+68178d94: creationDate
+68178dac: setAlpha
+68178db8: extractAlpha
+68178dc8: trimWhiteSpace
+68178dd8: createMatte
+68178dec: copyPixels
+68178df8: collide
+68178e00: shockMachineVersion
+68178e14: soundMixMedia
+68178e24: tempoScaleFactor
+68178e38: appMinimize
+68178e44: commandLine
+68178e50: deactivateApplication
+68178e68: activateApplication
+68178e7c: productBuildVersion
+68178e90: uiLanguage
+68178e9c: applicationName
+68178eac: unknown
+68178eb4: offline
+68178ebc: online
+68178ec4: internetConnected
+68178ed8: useFastQuads
+68178ee8: scriptList
+68178ef4: lastChannel
+68178f00: animGif
+68178f08: centerRegPoint
+68178f18: shockMachine
+68178f28: environment
+68178f34: setPixel
+68178f40: getPixel
+68178f58: flash
+68178f60: movieXtraList
+68178f70: xtraList
+68178f7c: mapStageToMember
+68178f90: mapMemberToStage
+68178fa4: blendLevel
+68178fb0: vectorShape
+68178fbc: autohilite
+68178fc8: imlScrollBar
+68178fd8: movieAboutInfo
+68178fe8: movieCopyrightInfo
+68178ffc: soundDevice
+68179008: soundDeviceList
+68179018: editableMedia
+68179028: localString
+68179034: mediaFormat
+68179040: dither
+68179048: mouseLoc
+68179054: bgStageColor
+68179064: bgColor
+6817906c: index
+68179074: lineDirection
+68179084: endFrame
+68179090: startFrame
+6817909c: keyboardFocusSprite
+681790b8: allowGraphicMenu
+681790cc: allowCustomCaching
+681790e0: allowZooming
+681790f0: allowTransportControl
+68179108: allowVolumeControl
+6817911c: allowSaveLocal
+6817912c: flipV
+68179134: flipH
+68179144: rotation
+68179150: alphaThreshold
+68179160: useAlpha
+6817916c: urlAdmin
+68179178: thumbnail
+68179184: quickTimeMedia
+68179194: castMemberProperties
+681791ac: paste
+681791c0: alphaInfo
+681791cc: soundKeepDevice
+681791dc: netThrottleTicks
+681791f0: prepareMovie
+68179200: safePlayer
+6817920c: rowBytes
+68179218: netPresent
+68179224: mouseMember
+68179230: scriptStyles
+68179240: tweened
+68179248: frameReady
+68179254: applicationPath
+68179264: currentSpriteNum
+68179278: sendAllSprites
+68179288: sendSprite
+68179294: mediaReady
+681792a0: sound8
+681792a8: sound7
+681792b0: sound6
+681792b8: sound5
+681792c0: sound4
+681792c8: sound3
+681792d0: sound2
+681792d8: sound1
+681792e0: isPastCuePoint
+681792f0: cuePassed
+681792fc: currentTime
+68179308: mostRecentCuePoint
+6817931c: mediaBusy
+68179328: cuePointTimes
+68179338: cuePointNames
+68179348: rgbColor
+68179354: indexColor
+68179360: graphic
+68179368: boolean
+68179370: format
+68179378: comment
+68179380: range
+68179388: spriteNum
+68179394: testPointHook
+681793a4: alertHook
+681793b0: local
+681793b8: currentScript
+681793c8: scriptInstanceList
+681793dc: stopEvent
+681793e8: getPref
+681793f0: externalParamValue
+68179404: externalParamName
+68179418: externalParamCount
+6817942c: saveLocal
+68179438: proxyServer
+68179444: clearCache
+68179450: cacheSize
+6817945c: cacheDocverify
+6817946c: browserName
+68179478: externalEvent
+68179488: tellStreamStatus
+6817949c: streamStatus
+681794ac: preloadNetThing
+681794bc: postNetText
+681794c8: netTextResult
+681794d8: netStatus
+681794e4: netMIME
+681794ec: netLastModDate
+681794fc: netError
+68179508: netDone
+68179510: netAbort
+6817951c: gotoNetPage
+68179528: gotoNetMovie
+68179538: getStreamStatus
+68179548: getLatestNetID
+68179558: downloadNetThing
+6817956c: setPref
+68179578: systemWinDir4
+68179588: preloadMember
+68179598: unloadMember
+681795a8: wordWrap
+681795b4: fontStyle
+681795c0: fontSize
+681795d4: alignment
+681795e0: moaTEStyles
+681795ec: productVersion
+681795fc: productName
+68179608: appFileSpec
+68179614: runMode
+6817961c: organizationName
+68179630: userName
+6817963c: serialNumber
+6817964c: maskMember
+68179658: activeCastLib
+68179668: activeCast
+68179674: editFocusSprite
+68179684: mouseSprite
+68179690: messageLock
+6817969c: unloadMovie
+681796a8: preloadMovie
+681796b8: platform
+681796c4: emulateMultibuttonMouse
+681796dc: keyPressed
+681796e8: paletteRef
+681796f4: castLibNum
+68179700: memberNum
+6817970c: scoreSelection
+6817971c: desktopRectList
+6817972c: windowPresent
+6817973c: frontWindow
+68179748: activeWindow
+68179758: folderName
+68179764: trackText
+68179770: trackPreviousKeyTime
+68179788: trackNextKeyTime
+6817979c: trackPreviousSampleTime
+681797b4: trackNextSampleTime
+681797c8: setTrackEnabled
+681797d8: trackEnabled
+681797e8: trackStopTime
+681797f8: trackStartTime
+68179808: trackType
+68179814: trackCount
+68179820: authorMode
+6817982c: metallic
+68179840: vivid
+68179848: pastels
+68179850: grayscale
+6817985c: rainbow
+68179864: web216
+6817986c: systemWin
+68179878: systemMac
+68179884: scrollByLine
+68179894: scrollByPage
+681798a4: scrollTop
+681798b0: pageHeight
+681798bc: locToCharPos
+681798cc: charPosToLoc
+681798dc: locVToLinePos
+681798ec: linePosToLocV
+681798fc: lineHeight
+68179908: lineCount
+68179914: chunkSize
+68179920: changeArea
+6817992c: transitionType
+6817993c: fadeToWhite
+68179948: fadeToBlack
+68179954: normal
+6817995c: paletteFrames
+6817996c: paletteSpeed
+6817997c: paletteOverTime
+6817998c: paletteTransitionType
+681799a4: waitCuePoint
+681799b4: waitDigitalVideo
+681799c8: waitSound
+681799d4: waitClick
+681799e0: waitSeconds
+681799ec: frameSound2
+681799f8: frameSound1
+68179a04: frameTransition
+68179a14: updateLock
+68179a20: paletteMapping
+68179a30: winPalette
+68179a3c: winWave
+68179a44: winPict
+68179a4c: winDIB
+68179a54: macColorTable
+68179a64: macTEStyles
+68179a70: macSnd
+68179a78: macGWorld
+68179a84: macPict
+68179a8c: moaSound
+68179a98: moaPixels
+68179aa4: moaHandle
+68179ab0: textStyles
+68179abc: image
+68179ac4: composite
+68179ad0: timeScale
+68179adc: digitalVideoType
+68179af0: fileType
+68179afc: quickTime
+68179b08: videoForWindows
+68179b18: digitalVideoTimeScale
+68179b30: limit
+68179b38: fixed
+68179b40: adjust
+68179b48: parent
+68179b50: score
+68179b58: roundRect
+68179b6c: radioButton
+68179b78: checkBox
+68179b84: pushButton
+68179b90: timeCode
+68179b9c: music
+68179ba4: scriptType
+68179bb0: tracks
+68179bb8: track
+68179bc0: scriptsEnabled
+68179bd0: filled
+68179bd8: shapeType
+68179be4: buttonType
+68179bf0: channelCount
+68179c00: sampleRate
+68179c0c: sampleSize
+68179c18: editable
+68179c24: textWrap
+68179c30: autoTab
+68179c38: boxDropShadow
+68179c48: dropShadow
+68179c54: scroll
+68179c5c: margin
+68179c64: border
+68179c6c: boxType
+68179c78: richText
+68179c8c: preloadMode
+68179c98: idleHandlerPeriod
+68179cac: idleReadChunkSize
+68179cc0: idleLoadMode
+68179cd0: idleLoadPeriod
+68179ce0: idleLoadTag
+68179cec: idleLoadDone
+68179cfc: cancelIdleLoad
+68179d0c: finishIdleLoad
+68179d1c: maxMember
+68179d28: minMember
+68179d34: memberCount
+68179d40: castCount
+68179d4c: remapPalettes
+68179d5c: antialias
+68179d68: defaultPalette
+68179d78: defaultStageRect
+68179d8c: defaultColorDepth
+68179da0: playing
+68179da8: modifyName
+68179db4: createName
+68179dc0: insertFrame
+68179dcc: deleteFrame
+68179dd8: duplicateFrame
+68179de8: updateFrame
+68179df4: clearFrame
+68179e00: endRecording
+68179e10: beginRecording
+68179e20: castLibs
+68179e2c: members
+68179e34: xtras
+68179e3c: videoForWindowsPresent
+68179e54: searchPath
+68179e60: doEffects
+68179e6c: cpuHogTicks
+68179e80: mouseHitTest
+68179e90: hitTest
+68179e98: mouseTrack
+68179ea4: stepFrame
+68179eb0: updateRect
+68179ebc: collectChangeRects
+68179ed0: actorList
+68179edc: getNthFileNameInFolder
+68179ef4: movieFileFreeSize
+68179f08: movieFileSize
+68179f18: searchCurrentFolder
+68179f2c: searchPaths
+68179f38: scriptNum
+68179f44: scoreColor
+68179f50: blend
+68179f58: video
+68179f60: pausedAtStart
+68179f70: preloadRam
+68179f7c: frameRate
+68179f88: purgePriority
+68179f98: traceLogFile
+68179fa8: traceLoad
+68179fb4: stage
+68179fc4: movieName
+68179fd0: moviePath
+68179fdc: windowList
+68179fe8: restore
+68179ff0: maximize
+68179ffc: minimize
+6817a008: mergeDisplayTemplate
+6817a020: mergeProps
+6817a02c: liveresize
+6817a038: metal
+6817a040: appearanceOptions
+6817a054: sideTitlebar
+6817a064: minimizebox
+6817a070: maximizebox
+6817a07c: closebox
+6817a090: titlebarOptions
+6817a0a0: dialog
+6817a0a8: fullscreen
+6817a0bc: document
+6817a0c8: maximized
+6817a0d4: minimized
+6817a0e0: sizeState
+6817a0ec: dockingenabled
+6817a0fc: resizable
+6817a108: title
+6817a110: displayTemplate
+6817a120: sourceRect
+6817a12c: drawRect
+6817a138: updateMovieEnabled
+6817a14c: preloadEventAbort
+6817a160: saveMovie
+6817a16c: trace
+6817a174: depth
+6817a17c: erase
+6817a184: previous
+6817a190: moveToBack
+6817a19c: moveToFront
+6817a1a8: frameScript
+6817a1b4: frameTempo
+6817a1c0: framePalette
+6817a1d0: frameLabel
+6817a1dc: lastFrame
+6817a1e8: castType
+6817a1f4: loaded
+6817a1fc: modified
+6817a208: digitalVideo
+6817a218: shape
+6817a220: button
+6817a228: filmLoop
+6817a234: bitmap
+6817a23c: regPoint
+6817a248: scriptText
+6817a258: findEmpty
+6817a264: importFileInto
+6817a27c: pasteClipboardInto
+6817a290: copyToClipboard
+6817a2a0: hmsToFrames
+6817a2ac: framesToHms
+6817a2b8: soundLevel
+6817a2c4: quickTimePresent
+6817a2d8: stopTime
+6817a2e4: startTime
+6817a2f0: movieTime
+6817a2fc: movieRate
+6817a308: ramNeeded
+6817a314: visibility
+6817a320: directToStage
+6817a330: controller
+6817a33c: duration
+6817a348: trails
+6817a350: unloadCast
+6817a35c: unload
+6817a364: perFrameHook
+6817a378: preloadCast
+6817a384: preload
+6817a38c: alert
+6817a394: puppetPalette
+6817a3a4: puppetTransition
+6817a3b8: puppetTempo
+6817a3c4: puppetSprite
+6817a3d4: immediateSprite
+6817a3e4: updateStage
+6817a3f0: closeResFile
+6817a400: openResFile
+6817a40c: dontPassEvent
+6817a41c: zoomBox
+6817a424: shutDown
+6817a430: restart
+6817a438: startTimer
+6817a444: spriteBox
+6817a458: printFrom
+6817a464: showResFile
+6817a470: installMenu
+6817a47c: delay
+6817a484: continue
+6817a490: constrainV
+6817a49c: constrainH
+6817a4a8: xFactoryList
+6817a4b8: soundBusy
+6817a4c4: rollover
+6817a4d0: marker
+6817a4d8: lastEvent
+6817a4e4: lastRoll
+6817a4f0: lastKey
+6817a4f8: lastClick
+6817a504: keyCode
+6817a50c: doubleClick
+6817a518: colorQD
+6817a520: mouseCast
+6817a52c: mouseChar
+6817a538: mouseWord
+6817a544: mouseItem
+6817a550: mouseLine
+6817a55c: pauseState
+6817a568: labelList
+6817a574: pathname
+6817a580: selection
+6817a58c: mouseV
+6817a594: mouseH
+6817a59c: machineType
+6817a5a8: stageBottom
+6817a5b4: stageTop
+6817a5c0: stageRight
+6817a5cc: stageLeft
+6817a5dc: clickOn
+6817a5e4: controlDown
+6817a5f0: shiftDown
+6817a5fc: stillDown
+6817a608: optionDown
+6817a614: commandDown
+6817a620: puppetSound
+6817a62c: enabled
+6817a634: checkMark
+6817a640: volume
+6817a648: timeoutPlay
+6817a654: timeoutMouse
+6817a664: timeoutKeydown
+6817a674: timeoutLapsed
+6817a684: timeoutLength
+6817a694: timer
+6817a69c: beepOn
+6817a6a4: stageColor
+6817a6b0: multisound
+6817a6bc: buttonStyle
+6817a6c8: checkBoxType
+6817a6d8: checkBoxAccess
+6817a6e8: centerStage
+6817a6f4: fixStageSize
+6817a704: switchColorDepth
+6817a718: selEnd
+6817a720: selStart
+6817a72c: exitLock
+6817a738: colorDepth
+6817a744: soundEnabled
+6817a754: menuItems
+6817a760: menuItem
+6817a76c: menus
+6817a77c: extend
+6817a784: condense
+6817a790: shadow
+6817a798: outline
+6817a7a0: underline
+6817a7ac: italic
+6817a7bc: plain
+6817a7c4: center
+6817a7cc: castMembers
+6817a7d8: textSize
+6817a7e4: textAlign
+6817a7f0: textHeight
+6817a7fc: textFont
+6817a808: textStyle
+6817a814: playFile
+6817a828: fadeOut
+6817a830: fadeIn
+6817a838: constraint
+6817a844: tempo
+6817a84c: transition
+6817a858: palette
+6817a860: editableText
+6817a870: moveableSprite
+6817a880: pattern
+6817a88c: stretch
+6817a894: lineSize
+6817a8a0: backColor
+6817a8ac: foreColor
+6817a8b8: castNum
+6817a8c0: cursor
+6817a8c8: immediate
+6817a8d4: puppet
+6817a8dc: label
+6817a8f8: movie
+6817a918: setTrasactionHandler
+6817a930: restoreTransactions
+6817a944: requestProductDetails
+6817a95c: makePurchase
+6817a96c: showAchievements
+6817a980: loadAllAchievements
+6817a994: loadPlayerAchievements
+6817a9ac: reportAchievement
+6817a9c0: retrieveScore
+6817a9d0: reportscore
+6817a9dc: getLeaderboardsInfo
+6817a9f0: showleaderboard
+6817aa00: getLocalPlayerInfo
+6817aa14: showBanner
+6817aa20: authenticateLocalPlayer
+6817aa38: nightVisionMatrix
+6817aa50: fresnelPower
+6817aa60: fresnelScale
+6817aa70: fresnalBias
+6817aa7c: fresnel
+6817aa84: rendertocubemap
+6817aa94: cubemaprendertexture
+6817aaac: scalefactor
+6817aab8: displacementmap
+6817aac8: rendertoperlinnoisetexture
+6817aae4: perlinNoiseTexture
+6817aaf8: shadowopacity
+6817ab08: nightopacity
+6817ab18: bluebias
+6817ab24: redbias
+6817ab2c: greenbias
+6817ab38: ppnightvision
+6817ab48: depthrange
+6817ab54: depthstart
+6817ab60: ppdepthoffield
+6817ab70: texturelist
+6817ab7c: oplist
+6817ab84: ppblendtextures
+6817ab94: bloomsaturation
+6817aba4: basesaturation
+6817abb4: bloomintensity
+6817abc4: baseintensity
+6817abd4: bloomthreshold
+6817abe4: ppBloom
+6817abec: blurconst
+6817abf8: blurmotion
+6817ac04: ppblurmotion
+6817ac14: ppadjustcolor
+6817ac24: adjustcolormatrix
+6817ac38: ppconvolution
+6817ac48: convolutionmatrix
+6817ac5c: newMatrix
+6817ac68: newppeffect
+6817ac74: ppeffectlist
+6817ac84: flashComponent
+6817ac94: closeRequest
+6817aca4: scriptExecutionStyle
+6817acbc: collapseWindow
+6817accc: revealWindow
+6817acdc: trayIconRightMouseDown
+6817acf4: trayIconMouseDoubleClick
+6817ad10: trayIconMouseDown
+6817ad24: windowsMedia
+6817ad38: realMedia
+6817ad44: writeValue
+6817ad50: readValue
+6817ad5c: extension
+6817ad68: visible
+6817ad70: folder
+6817ad78: close
+6817ad80: flush
+6817ad88: create
+6817ad98: deleteFolder
+6817ada8: createFolder
+6817adb8: copyTo
+6817adc0: getTempPath
+6817adcc: exchange
+6817add8: rename
+6817ade0: write
+6817adf8: position
+6817ae04: locked
+6817ae0c: creator
+6817ae14: freeBlocks
+6817ae20: blockSize
+6817ae2c: volumeInfo
+6817ae38: exists
+6817ae40: folderChar
+6817ae64: stats
+6817ae6c: protect
+6817ae74: sweep
+6817ae7c: transform
+6817ae88: vector
+6817ae90: shockwave3d
+6817ae9c: seconds
+6817aea4: showXLib
+6817aeb0: closeXLib
+6817aebc: openXLib
+6817aec8: version
+6817aed0: ticks
+6817aed8: freeBytes
+6817aee4: freeBlock
+6817aef0: memorysize
+6817aefc: clearGlobals
+6817af0c: showGlobals
+6817af18: showLocals
+6817af2c: target
+6817af34: timeoutHandler
+6817af44: persistent
+6817af50: timeoutList
+6817af5c: notify
+6817af6c: sleep
+6817af74: period
+6817af7c: rawNew
+6817af84: handlers
+6817af90: handler
+6817af98: hilite
+6817afa0: lines
+6817afa8: items
+6817afb0: words
+6817afb8: chars
+6817afc0: paragraphs
+6817afcc: paragraph
+6817afd8: milliSeconds
+6817afe8: globals
+6817aff0: itemDelimiter
+6817b000: randomSeed
+6817b00c: romanLingo
+6817b018: forget
+6817b020: default
+6817b028: getBehaviorTooltip
+6817b03c: getBehaviorDescription
+6817b054: getPropertyDescriptionList
+6817b070: runPropertyDialog
+6817b084: endSprite
+6817b090: beginSprite
+6817b09c: mouseUpOutSide
+6817b0b4: interface
+6817b0c0: mMessageList
+6817b0d0: media
+6817b0d8: actor
+6817b0e0: birth
+6817b0e8: ancestor
+6817b0f4: fileName
+6817b108: mInstanceRespondsTo
+6817b11c: super
+6817b134: mdispose
+6817b140: mRespondsTo
+6817b14c: mPerform
+6817b15c: month
+6817b174: green
+6817b180: colorType
+6817b18c: hexString
+6817b198: instance
+6817b1a4: getContents
+6817b1b0: inside
+6817b1bc: union
+6817b1c4: intersect
+6817b1d0: inflate
+6817b1d8: duplicate
+6817b1f8: findPosNear
+6817b204: findPos
+6817b20c: count
+6817b214: setaProp
+6817b220: setProp
+6817b228: setAt
+6817b230: getLast
+6817b238: getOne
+6817b240: getPos
+6817b248: getPropAt
+6817b254: getaProp
+6817b260: getProp
+6817b268: getAt
+6817b270: deleteOne
+6817b27c: deleteProp
+6817b288: deleteAll
+6817b294: deleteAt
+6817b2a0: append
+6817b2a8: addProp
+6817b2b0: addAt
+6817b2bc: prepend
+6817b2c4: linearList
+6817b2d0: bitNot
+6817b2d8: bitXor
+6817b2e0: bitOr
+6817b2e8: bitAnd
+6817b2f0: sendAncestor
+6817b308: callAncestor
+6817b320: paletteIndex
+6817b334: color
+6817b33c: point
+6817b34c: propList
+6817b360: power
+6817b384: offset
+6817b38c: listp
+6817b394: voidp
+6817b39c: symbolp
+6817b3ac: abort
+6817b3b8: nothing
+6817b3c0: number
+6817b3c8: picture
+6817b3d0: object
+6817b3e0: abbrev
+6817b3e8: abbreviated
+6817b3fc: short
+6817b404: timeoutScript
+6817b414: keyUpScript
+6817b420: keyDownScript
+6817b430: mouseUpScript
+6817b440: mouseDownScript
+6817b450: floatPrecision
+6817b460: random
+6817b468: param
+6817b470: paramCount
+6817b47c: clickLoc
+6817b488: picturep
+6817b494: float
+6817b49c: value
+6817b4a4: integer
+6817b4ac: floatp
+6817b4b4: objectp
+6817b4bc: charToNum
+6817b4c8: vectorp
+6817b4d0: stringp
+6817b4d8: integerp
+6817b4ec: numToChar
+6817b4f8: symbol
+6817b500: string
+6817b508: length
+6817b514: result
+6817b51c: systemDate
+6817b528: maxinteger
+6817b544: property
+6817b554: getPropRef
+6817b564: space
+6817b57c: window
+6817b584: script
+6817b58c: prepareFrame
+6817b59c: rightMouseUp
+6817b5ac: rightMouseDown
+6817b5bc: mouseWithin
+6817b5c8: mouseStillDown
+6817b5d8: mouseLeave
+6817b5e4: mouseEnter
+6817b5f0: resizeWindow
+6817b600: zoomWindow
+6817b60c: moveWindow
+6817b618: closeWindow
+6817b624: openWindow
+6817b630: deactivateWindow
+6817b644: activateWindow
+6817b654: exitFrame
+6817b660: enterFrame
+6817b66c: keyUp
+6817b67c: castLib
+6817b698: global
+6817b6a0: otherwise
+6817b6c8: setContentsAfter
+6817b6dc: setContentsBefore
+6817b6f0: setContents
+6817b70c: member
+6817b714: delete
+6817b71c: timeout
+6817b724: pause
+6817b72c: sound
+6817b744: bottom
+6817b74c: right
+6817b754: mdescribe
+6817b760: mname
+6817b770: intersects
+6817b77c: within
+6817b784: keyDown
+6817b78c: height
+6817b794: width
+6817b7b0: while
+6817b7b8: factory
+6817b7cc: method
+6817b7d4: frame
+6817b7e4: mouseDown
+6817b7f0: mouseUp
+6817b7f8: stepMovie
+6817b804: stopMovie
+6817b810: startMovie
+6817b824: after
+6817b82c: before
+6817b844: sprite
+6817b84c: field
+6817b854: empty
+6817b85c: quote
+6817b864: backSpace
+6817b874: enter
+6817b87c: return
+6817b884: false
+6817b8f4: starts
+6817b8fc: contains
+6817b94c: newparticle
+6817b958: motionQuality
+6817b970: isArray
+6817b978: isInteger
+6817b984: parseInt
+6817b990: parseFloat
+6817b9a8: substr
+6817b9b8: rootMenu
+6817b9c4: printAsBitmap
+6817b9d4: print
+6817b9dc: callFrame
+6817b9e8: activateButton
+6817b9f8: activateAtLoc
+6817ba14: Infinity
+6817ba28: sendXML
+6817ba30: writeString
+6817ba3c: writeReturn
+6817ba48: writeChar
+6817ba54: voiceWordPos
+6817ba64: voiceStop
+6817ba70: voiceState
+6817ba7c: voiceSpeak
+6817ba88: voiceSetVolume
+6817ba98: voiceSetRate
+6817baa8: voiceSetPitch
+6817bab8: voiceSet
+6817bac4: voiceResume
+6817bad0: voicePause
+6817badc: voiceInitialize
+6817baec: voiceGetVolume
+6817bafc: voiceGetRate
+6817bb0c: voiceGetPitch
+6817bb1c: voiceGetAll
+6817bb28: voiceGet
+6817bb34: voiceCount
+6817bb40: videoFormat
+6817bb4c: translation
+6817bb58: titleMenu
+6817bb64: titleCount
+6817bb70: tellTarget
+6817bb7c: suspendUpdates
+6817bb8c: substituteFont
+6817bb9c: subPictureType
+6817bbac: subPictureCount
+6817bbbc: subPicture
+6817bbc8: stopTimeList
+6817bbd8: staticQuality
+6817bbe8: startTimeList
+6817bbf8: sourceFileName
+6817bc08: settingsPanel
+6817bc18: setPosition
+6817bc24: setNewLineConversion
+6817bc3c: setFinderInfo
+6817bc4c: setFilterMask
+6817bc5c: setCallback
+6817bc68: selectedButton
+6817bc78: selectButtonRelative
+6817bc90: selectButton
+6817bca0: selectAtLoc
+6817bcb4: returnToTitle
+6817bcc4: realPlayerVersion
+6817bcd8: realPlayerPromptToInstall
+6817bcf4: realPlayerNativeAudio
+6817bd0c: readWord
+6817bd18: readToken
+6817bd24: readLine
+6817bd30: readFile
+6817bd3c: readChar
+6817bd48: quickTimeVersion
+6817bd5c: playerParentalLevel
+6817bd70: playFromToTime
+6817bd80: percentBuffered
+6817bd90: password
+6817bd9c: openFile
+6817bda8: obeyScoreRotation
+6817bdbc: nodeType
+6817bdc8: nodeExitCallback
+6817bddc: nodeEnterCallback
+6817bdf8: newObject
+6817be04: missingFonts
+6817be14: mediaStatus
+6817be20: loopBounds
+6817be2c: lastError
+6817be38: isVRMovie
+6817be44: hotSpotExitCallback
+6817be58: hotSpotEnterCallback
+6817be70: getVariable
+6817be7c: getPosition
+6817be88: getOSDirectory
+6817be98: getLength
+6817bea4: getFrameLabel
+6817beb4: getFlashProperty
+6817bec8: getFinderInfo
+6817bed8: frameStep
+6817bee4: domain
+6817beec: displaySave
+6817bef8: displayRealLogo
+6817bf08: displayOpen
+6817bf14: createFile
+6817bf20: closedCaptions
+6817bf30: closeFile
+6817bf3c: clearAsObjects
+6817bf4c: chapterCount
+6817bf5c: chapter
+6817bf64: buttonCount
+6817bf70: autoCameraPosition
+6817bf84: audioStreamCount
+6817bf98: audioStream
+6817bfa4: audioSampleRate
+6817bfb4: audioFormat
+6817bfc0: audioExtension
+6817bfd0: audioChannelCount
+6817bfe4: audio
+6817bfec: aspectRatio
+6817bff8: antiAliasingSupported
+6817c010: antiAliasingEnabled
+6817c024: angleCount
+6817c030: URLEncode
+6817c03c: properties
+6817c048: operators
+6817c05c: HMStoFrames
+6817c068: EvalScript
+6817c074: DVDeventNotification
+6817c08c: function
+6817c098: repeat
+6817c0d4: _movie_
+6817c0e8: <menuItem %d %d %ld %lx>
+6817c104: <menu %d %ld %lx>
+6817c14f: >_global
+6817c18e: o@_symbol
+6817c19c: <symbol("%s")>
+6817c1ac: _generic
+6817c1c0: memorySize
+6817c1cc: milliseconds
+6817c1dc: deskTopRectList
+6817c1ec: gcNumber
+6817c1f8: gcLastBytes
+6817c204: gcBytes
+6817c20c: gcMallocBytes
+6817c21c: gcMaxBytes
+6817c22c: _system
+6817c234: _sound
+6817c23c: _mouse
+6817c24c: markerList
+6817c258: preLoadEventAbort
+6817c26c: editShortCutsEnabled
+6817c284: unLoadMovie
+6817c290: preLoadMovie
+6817c2a0: unLoadMember
+6817c2b0: unLoad
+6817c2b8: preLoadMember
+6817c2c8: preLoad
+6817c2d0: rollOver
+6817c2dc: _movie
+6817c2e4: _player
+6817c2ec: access
+6817c2f8: --> %p
+
+6817c300: Handler: %p 
+6817c310: Script: %p 
+6817c31c: Frame: %d 
+6817c328: Movie: %p 
+6817c338: Invalid varRef value in lcr_VarRefToSymRef. File may be corrupted
+6817c37c: <%d %x>
+6817c398:  lcr_stk_PopFrame: unbalanced stk prev=%ld top=%ld
+
+6817c3cc: lcr_stk_PopFrame: unbalanced stk
+6817c42c: %p = %p
+
+6817c438: %p = 
+6817c448: is3dCastMember
+6817c458: #%02X%02X%02X
+6817c46c: --   Xtra: %p
+
+6817c47c: <file %ld %lx>
+6817c48c: lcr_StkLoc() returned NULL, lingo script may be corrupted
+6817c4d5: %<=== %p = 
+6817c4e4: AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz__..
+6817c520: msgTable
+6817c52c: -- "%p"
+
+6817c538: <factory %ld %lx>
+6817c54c: actual
+6817c554: scripts
+6817c55c: contexts
+6817c568: threads
+6817c570: simple
+6817c580: compound
+6817c58c: freed
+6817c594: 
+Reference Objects: 
+
+6817c5ac: %lx type=%v refCount=%ld size=%ld
+
+6817c5d0: 
+
+Root Objects: 
+
+6817c5e4: Plugin
+6817c5ec: LINGO.INI
+6817c618: %s
+%s
+%s
+6817c62c: packageUrl
+6817c638: packageFiles
+6817c648: Must have either Full Screen or Show Title Bar set to show user menus.
+6817c690: Prefs
+6817c698: dswMedia
+6817c6c4: Pause
+6817c6cc: IsPaused
+6817c6d8: Suspend
+6817c6e0: Resume
+6817c6e8: IsBusy
+6817c6f0: BreakLoop
+6817c704: IsPastCuePoint
+6817c714: File not found!
+6817c734: Projector
+6817c740: Trial
+6817c750: 12.3.5
+6817c758: utf-16be
+6817c764: unicodefffe
+6817c770: utf-16le
+6817c77c: csunicode
+6817c78b: -10646-ucs-2
+6817c798: unicode
+6817c7a8: symbolString
+6817c7b8: Hebrew
+6817c7c0: Arabic
+6817c7c8: Chinese
+6817c7d0: Swedish
+6817c7d8: Spanish
+6817c7e0: Italian
+6817c7e8: Portuguese
+6817c7f4: English
+6817c7fc: Other
+6817c804: Korean
+6817c80c: Japanese
+6817c818: German
+6817c820: French
+6817c82c: Director
+6817c838: safeForShockwave
+6817c84c: MIOKey_NetStreamCacheFile
+6817c868: _DEFAULT_
+6817c87e: p@ClassID
+6817c888: assetCaps
+6817c894: actorType
+6817c8a0: displayNameString
+6817c8b4: Compare
+6817c8bc: UnderstoodReceptors
+6817c8d0: FileTypes
+6817c8dc: FileExts
+6817c8f0: /WindowsMediaAsset
+6817c904: /WindowsMedia
+6817c914: /DVDAsset
+6817c928: /Shockwave3dAsset
+6817c93c: /RealMediaAsset/sw3d
+6817c954: /RealMedia
+6817c960: /QT6Asset
+6817c96c: /QuickTime6Asset
+6817c980: /TIFFImportExport
+6817c994: /TIFF
+6817c99c: /TargaImportExport
+6817c9b0: /Targa
+6817c9b8: /PNGImportExport
+6817c9d4: https://download.macromedia.com/pub/shockwave12.0/xtras
+6817ca0c: https://download.macromedia.com/pub/shockwave
+6817ca3c: Adobe Systems Incorporated
+6817ca58: Macromedia, Inc.
+6817ca6c: autodownload.txt
+6817ca80: Windows Media Asset.x32
+6817ca98: DVD Asset.x32
+6817caa8: MacroMix.x32
+6817cab8: DirectSound.x32
+6817cac8: Multiusr.x32
+6817cad8: Shockwave 3d Asset.x32
+6817caf0: Sound Control.x32
+6817cb04: TextXtra.x32
+6817cb14: Text Asset.x32
+6817cb24: Font Xtra.x32
+6817cb34: Font Asset.x32
+6817cb44: Flash Asset.x32
+6817cb54: SWASTRM.X32
+6817cb60: SWA Import Export.x32
+6817cb78: swadcmpr.x32
+6817cb88: Speech.x32
+6817cb94: DVD Asset
+6817cba0: Multiusr
+6817cbac: Shockwave 3d Asset Xtra
+6817cbc4: Sound Control
+6817cbd4: TextXtra PPC
+6817cbe4: TextAsset PPC
+6817cbf4: Font Xtra PPC
+6817cc04: Font Asset PPC
+6817cc14: Flash Asset PPC
+6817cc24: SWA Streaming PPC Xtra
+6817cc3c: SWA Import Export
+6817cc50: SWA Decompression PPC Xtra
+6817cc6c: Speech
+6817cc75: QT6Asset.x32
+6817cc84: https:%s
+6817cc90: http:
+6817cc98: Quicktime Asset
+6817cca8: Qt3Asset.x32
+6817ccb9: MacroMix.x32
+6817ccc9: swadcmpr.x32
+6817cce4:  - Win (Dir 4)
+6817cd00:  - Win
+6817cd6c:  - Mac
+6817cd74: SYSTEM - WIN (DIR 4)
+6817cd8c: System - Win
+6817cda8: Metallic
+6817cdbc: Vivid
+6817cdc4: Pastels
+6817cdcc: Grayscale
+6817cdd8: Rainbow
+6817cde0: System - Mac
+6817cdf0: System
+6817cdf8: member %ld of PLAYER-CAST %ld%s
+6817ce18: member %ld of castLib %ld%s
+6817ce34:  (invalid)
+6817ce40:  Adobe Director 12 Trial 
+6817ce64: shared.cst
+6817ce70: Internal
+6817ce7c: Monaco
+6817ce84: Geneva
+6817ce8c: Chicago
+6817cec4: No file access occurred.
+6817cee0: Seeked %ld to find member at file pos %ld.  Read in %ld bytes.
+6817cf20: Seeked between files!  
+6817cf38: File seek info: 
+6817cf4c: (Downloaded %ld out of %ld bytes)
+6817cf70: "%s" 
+6817cf78: external castLib 
+6817cf8c: movie 
+6817cf94: linked file 
+6817cfa4: Member is in 
+6817cfb4: failed to load.
+6817cfc4: failed to load because its media was not ready (on disk).
+6817d000: had its download stream started.
+6817d024: was purged from memory.
+6817d03c: was loaded into memory.
+6817d054: ("%s") 
+6817d05c: member %ld of 'floating' castLib %ld 
+6817d084: member %ld of castLib %ld 
+6817d0a0: , unchanged).
+6817d0b0: , %ld bytes released).
+6817d0c8: , %ld bytes consumed).
+6817d0e4: Movie "%s" is on frame %ld (freeBytes = %ld
+6817d110: Time = %lu msec (%lu msec later).
+6817d134: ---------------------------------
+6817d15c: Director TraceLog output started: 
+6817d188: 42211111111
+6817d194: MIOKey_FileCreator
+6817d1a8: MIOKey_FileType
+6817d1b8: kMoaCfFormat_snd
+6817d1d7: @SecPrefs
+6817d1e4: crossdomain.xml
+6817d224: ;$!$:
+6817d22c: DirTypes
+6817d238: 1.2.3
+6817d258: JSExceptionState.exception
+6817d278: other
+6817d280: can't unseal {0} objects
+6817d29c: can't seal {0} objects
+6817d2b4: can't decode JSPrincipals
+6817d2d0: reserved slot index out of range
+6817d2f4: can't supply flags when constructing one RegExp from another
+6817d334: redeclaration of formal parameter {0}
+6817d35c: useless expression
+6817d370: reference to undefined property {0}
+6817d394: trailing comma is not legal in ECMA-262 object initializers
+6817d3d0: setting a property that has only a getter
+6817d3fc: malformed URI sequence
+6817d414: deprecated {0} usage
+6817d42c: anonymous function does not always return a value
+6817d460: assignment to undeclared variable {0}
+6817d488: redeclaration of {0} {1}
+6817d4a4: second argument to Function.prototype.apply must be an array
+6817d4e4: can't describe non-native properties of class {0}
+6817d518: invalid array length
+6817d530: invalid {0} usage
+6817d544: precision {0} out of range
+6817d560: back-reference exceeds number of capturing parentheses
+6817d598: non-octal digit in an escape sequence that doesn't match a back-reference
+6817d5e4: uncaught exception: {0}
+6817d600: function {0} must be called directly, and not by way of a function of another name.
+6817d654: {0} is not a legal ECMA-262 octal constant
+6817d680: illegal character
+6817d694: overlarge sharp variable number
+6817d6b4: invalid flag after regular expression
+6817d6dc: unterminated regular expression literal
+6817d704: unterminated comment
+6817d71c: <Error #139 is currently unused>
+6817d740: unterminated string literal
+6817d75c: out of memory
+6817d76c: missing exponent
+6817d780: 'prototype' property of {0} is not an object
+6817d7b0: invalid sharp variable definition
+6817d7d4: syntax error
+6817d7e4: {0} is a reserved identifier
+6817d804: invalid property id
+6817d818: invalid {0} operand
+6817d82c: invalid assignment left-hand side
+6817d850: invalid variable initialization
+6817d870: variable {0} hides argument
+6817d88c: duplicate label
+6817d89c: invalid label
+6817d8ac: invalid return
+6817d8bc: invalid continue
+6817d8d0: invalid break
+6817d8e0: label not found
+6817d8f0: finally without try
+6817d904: catch without try
+6817d918: catch after unconditional catch
+6817d938: invalid for/in left-hand side
+6817d958: invalid switch statement
+6817d974: too many switch cases
+6817d98c: more than one switch default
+6817d9ac: invalid import expression
+6817d9c8: test for equality (==) mistyped as assignment (=)?{0}
+6817da00: function {0} does not always return a value
+6817da2c: missing ; before statement
+6817da48: missing ) in parenthetical
+6817da64: missing } after property list
+6817da84: missing : after property id
+6817daa0: missing ] after element list
+6817dac0: missing ) after argument list
+6817dae0: missing : in conditional expression
+6817db04: missing variable name
+6817db1c: missing } in compound statement
+6817db3c: missing ) after with-statement object
+6817db64: missing ( before with-statement object
+6817db8c: missing catch or finally after try
+6817dbb0: missing } after finally block
+6817dbd0: missing { before finally block
+6817dbf0: missing } after catch block
+6817dc0c: missing { before catch block
+6817dc2c: missing ) after catch
+6817dc44: missing identifier in catch
+6817dc60: missing ( before catch
+6817dc78: missing } after try block
+6817dc94: missing { before try block
+6817dcb0: missing ) after for-loop control
+6817dcd4: missing ; after for-loop condition
+6817dcf8: missing ; after for-loop initializer
+6817dd20: missing ( after for
+6817dd34: missing while after do-loop body
+6817dd58: missing : after case label
+6817dd74: missing { before switch body
+6817dd94: missing ) after switch expression
+6817ddb8: missing ( before switch expression
+6817dddc: missing name in export statement
+6817de00: missing ] in index expression
+6817de20: missing name after . operator
+6817de40: missing name in import statement
+6817de64: missing ) after condition
+6817de80: missing ( before condition
+6817de9c: missing } after function body
+6817debc: missing { before function body
+6817dedc: missing ) after formal parameters
+6817df00: missing formal parameter
+6817df1c: missing ( before formal parameters
+6817df40: bad script XDR magic number
+6817df5c: unknown seek whence: {0}
+6817df78: illegal end-based seek
+6817df90: illegal seek beyond end
+6817dfa8: illegal seek beyond start
+6817dfc4: unexpected end of data
+6817dfdc: sorry, String.prototype.{0} is not yet implemented
+6817e010: invalid string escape mask {0}
+6817e030: can't open {0}: {1}
+6817e044: no input for /{0}/{1}{2}
+6817e060: invalid regular expression flag {0}
+6817e084: invalid range in character class
+6817e0a8: trailing \ in regular expression
+6817e0cc: unterminated character class {0}
+6817e0f0: unterminated parenthetical {0}
+6817e110: regular expression before + could be empty
+6817e13c: regular expression before * could be empty
+6817e168: unterminated quantifier {0}
+6817e184: zero quantifier {0}
+6817e198: maximum {0} less than minimum
+6817e1b8: overlarge maximum {0}
+6817e1d0: overlarge minimum {0}
+6817e1e8: invalid quantifier {0}
+6817e200: too many function arguments
+6817e21c: too many constructor arguments
+6817e23c: unknown bytecode format {0}
+6817e258: bytecode {0} too large (limit {1})
+6817e27c: can't XDR class {0}
+6817e290: can't find class id {0}
+6817e2a8: {0} has no properties
+6817e2c0: can't convert {0} to {1}
+6817e2dc: {0} is permanent
+6817e2f0: cyclic {0} value
+6817e304: can't convert {0} to an integer
+6817e324: {0} is not a number
+6817e338: illegal radix {0}
+6817e34c: unimplemented JavaScript bytecode {0}
+6817e374: invalid 'instanceof' operand {0}
+6817e398: invalid sharp variable use #{0}#
+6817e3bc: invalid sharp variable definition #{0}=
+6817e3e4: invalid new expression result {0}
+6817e408: invalid 'in' operand {0}
+6817e424: too much recursion
+6817e438: {0} is not exported
+6817e44c: stack overflow in {0}
+6817e464: {0} is not a constructor
+6817e480: {0} is not a function
+6817e498: duplicate formal argument {0}
+6817e4b8: malformed formal parameter
+6817e4d4: {0} is read-only
+6817e4e8: <Error #18 is currently unused>
+6817e508: {0} too large
+6817e518: internal error compiling {0}: stack underflow at pc {1}
+6817e550: can't watch non-native objects of class {0}
+6817e57c: too many literals
+6817e590: internal error: no index for atom {0}
+6817e5b8: invalid Array.prototype.sort argument
+6817e5e0: sorry, Array.prototype.{0} is not yet implemented
+6817e614: can't alias {0} to {1} in class {2}
+6817e638: {0} has no constructor
+6817e650: {0}.prototype.{1} called on incompatible {2}
+6817e680: can't unlock memory
+6817e694: can't lock memory
+6817e6a8: unknown type {0}
+6817e6bc: invalid format character {0}
+6817e6dc: {0} requires more than {1} argument{2}
+6817e704: sorry, regular expression are not supported
+6817e730: {0} is not defined
+6817e744: <Error #0 is reserved>
+6817e75c: Out of memory
+6817e76c: No error message available for error number %d
+6817e7b4: stack
+6817e7bc: trap->closure
+6817e7cc: wp->closure
+6817e7d8: freeze
+6817e7e8: compile
+6817e7f0: Script.prototype.toSource
+6817e80c: (new %s(
+6817e818: Script.prototype.toString
+6817e834: apply
+6817e83c: __callee__
+6817e850: 0123456789ABCDEF
+6817e864: 0123456789abcdef
+6817e87c: (null)
+6817e890: watch
+6817e898: unwatch
+6817e8a0: hasOwnProperty
+6817e8b0: isPrototypeOf
+6817e8c0: propertyIsEnumerable
+6817e8d8: __defineGetter__
+6817e8ec: __defineSetter__
+6817e900: __lookupGetter__
+6817e914: __lookupSetter__
+6817e94c: #%u%c
+6817e954: [object 
+6817e960: primitive type
+6817e970: [object %s]
+6817e97c: Error
+6817e984: Error
+6817e98c: InternalError
+6817e99c: EvalError
+6817e9a8: RangeError
+6817e9b4: ReferenceError
+6817e9c4: SyntaxError
+6817e9d0: TypeError
+6817e9dc: URIError
+6817e9e8: exn.report.root
+6817e9f8: MIN_VALUE
+6817ea04: MAX_VALUE
+6817ea10: NEGATIVE_INFINITY
+6817ea24: POSITIVE_INFINITY
+6817ea38: toPrecision
+6817ea44: toExponential
+6817ea54: toFixed
+6817ea5c: Number
+6817ea64: isFinite
+6817ea70: isNaN
+6817ea78: Infinity
+6817ea88: isNaN
+6817ea90: isFinite
+6817ea9c: parseFloat
+6817eaa8: parseInt
+6817eab4: (new %s(%s))
+6817eb0c: rightContext
+6817eb1c: leftContext
+6817eb28: lastParen
+6817eb34: lastMatch
+6817eb40: input
+6817eb48: multiline
+6817eb54: lastIndex
+6817eb60: ignoreCase
+6817eb6c: res->input
+6817eb9c: round
+6817eba8: floor
+6817ec04: toTimeString
+6817ec14: toDateString
+6817ec24: toLocaleTimeString
+6817ec38: toLocaleDateString
+6817ec4c: toUTCString
+6817ec58: setUTCMilliseconds
+6817ec6c: setMilliseconds
+6817ec7c: setUTCSeconds
+6817ec8c: setSeconds
+6817ec98: setUTCMinutes
+6817eca8: setMinutes
+6817ecb4: setUTCHours
+6817ecc0: setHours
+6817eccc: setUTCDate
+6817ecd8: setDate
+6817ece0: setUTCMonth
+6817ecec: setMonth
+6817ecf8: setUTCFullYear
+6817ed08: setFullYear
+6817ed14: setYear
+6817ed1c: setTime
+6817ed24: getUTCMilliseconds
+6817ed38: getMilliseconds
+6817ed48: getUTCSeconds
+6817ed58: getSeconds
+6817ed64: getUTCMinutes
+6817ed74: getMinutes
+6817ed80: getUTCHours
+6817ed8c: getHours
+6817ed98: getUTCDay
+6817edac: getUTCDate
+6817edb8: getDate
+6817edc0: getUTCMonth
+6817edcc: getMonth
+6817edd8: getUTCFullYear
+6817ede8: getFullYear
+6817edf4: getYear
+6817edfc: getTimezoneOffset
+6817ee10: getTime
+6817ee1c: parse
+6817eea0: december
+6817eeac: november
+6817eeb8: october
+6817eec0: september
+6817eecc: august
+6817eee8: april
+6817eef0: march
+6817eef8: february
+6817ef04: january
+6817ef0c: sunday
+6817ef14: saturday
+6817ef20: friday
+6817ef28: thursday
+6817ef34: wednesday
+6817ef40: tuesday
+6817ef48: monday
+6817efbf: @%s, %.2d %s %.4d %.2d:%.2d:%.2d GMT
+6817efe4: %s %s %.2d %.4d %.2d:%.2d:%.2d GMT%+.4d%s%s
+6817f010: %s %s %.2d %.4d
+6817f020: %.2d:%.2d:%.2d GMT%+.4d%s%s
+6817f044: toGMTString
+6817f05c: Boolean
+6817f064: slice
+6817f06c: concat
+6817f074: splice
+6817f07c: unshift
+6817f084: shift
+6817f098: Array
+6817f0a7: @undefined
+6817f0b4: Arguments
+6817f0c0: Array
+6817f0c8: Boolean
+6817f0e0: Function
+6817f0f4: Number
+6817f0fc: Object
+6817f104: RegExp
+6817f10c: Script
+6817f114: String
+6817f11c: anonymous
+6817f128: arguments
+6817f134: arity
+6817f13c: callee
+6817f144: caller
+6817f14c: prototype
+6817f158: constructor
+6817f164: __count__
+6817f178: getter
+6817f184: index
+6817f18c: input
+6817f194: length
+6817f1a4: __parent__
+6817f1b0: __proto__
+6817f1bc: setter
+6817f1c8: toSource
+6817f1d4: toString
+6817f1e0: toLocaleString
+6817f1f0: valueOf
+6817f1fc: gc-arena
+6817f3cc: setline
+6817f3d4: newline
+6817f3dc: const
+6817f3e4: catch
+6817f3ec: funcdef
+6817f3f4: switch
+6817f3fc: cont2label
+6817f408: break2label
+6817f414: endbrace
+6817f420: labelbrace
+6817f434: hidden
+6817f43c: reserved0
+6817f450: assignop
+6817f45c: pcdelta
+6817f468: if-else
+6817f470: while loop
+6817f47c: for/in loop
+6817f488: for loop
+6817f494: do loop
+6817f49c: finally statement
+6817f4b0: catch block
+6817f4bc: try statement
+6817f4cc: switch statement
+6817f4e0: else statement
+6817f4f0: if statement
+6817f500: label statement
+6817f510: block
+6817f518: with statement
+6817f528: stdin
+6817f530: decrement
+6817f53c: increment
+6817f548: 
+Assuming equality test
+6817f560: retrval
+6817f568: setrval
+6817f570: backpatch_push
+6817f580: backpatch_pop
+6817f590: backpatch
+6817f59c: lookupswitchx
+6817f5ac: tableswitchx
+6817f5bc: defaultx
+6817f5c8: casex
+6817f5fc: deflocalfun
+6817f620: finally
+6817f62c: setcall
+6817f634: initcatchvar
+6817f644: namedfunobj
+6817f650: anonfunobj
+6817f664: defconst
+6817f670: deffun
+6817f678: enumelem
+6817f684: condswitch
+6817f698: exception
+6817f6a4: retsub
+6817f6ac: gosub
+6817f6b4: debugger
+6817f6c0: throw
+6817f6c8: setname
+6817f6d0: bindname
+6817f6e4: forelem
+6817f6ec: forprop
+6817f6f4: forname
+6817f6fc: toobject
+6817f708: vardec
+6817f718: varinc
+6817f720: arginc
+6817f730: decarg
+6817f740: incarg
+6817f748: usesharp
+6817f754: defsharp
+6817f760: initelem
+6817f76c: initprop
+6817f778: endinit
+6817f780: newinit
+6817f790: setvar
+6817f798: getvar
+6817f7a0: setarg
+6817f7a8: getarg
+6817f7bc: importelem
+6817f7c8: importprop
+6817f7d4: importall
+6817f7e0: exportname
+6817f7ec: exportall
+6817f7f8: closure
+6817f800: lookupswitch
+6817f810: tableswitch
+6817f82c: pushobj
+6817f834: setelem
+6817f83c: getelem
+6817f844: setprop
+6817f84c: getprop
+6817f854: elemdec
+6817f85c: propdec
+6817f864: namedec
+6817f86c: eleminc
+6817f874: propinc
+6817f87c: nameinc
+6817f884: decelem
+6817f88c: decprop
+6817f894: decname
+6817f89c: incelem
+6817f8a4: incprop
+6817f8ac: incname
+6817f8b4: delelem
+6817f8bc: delprop
+6817f8c4: delname
+6817f8d4: bitnot
+6817f928: bitand
+6817f940: bitor
+6817f948: setconst
+6817f960: forvar
+6817f968: forarg
+6817f988: leavewith
+6817f994: enterwith
+6817f9b4: finally-cookie
+6817f9c4: with-cookie
+6817f9d0: 	[native code]
+
+6817f9e8: \x%02X
+6817f9f0: \u%04X
+6817fa10: 	case %s:
+
+6817fa1c: 	default:
+
+6817fa28: 	switch (%s) {
+
+6817fa40: 	debugger;
+
+6817fa54: #%u=%s
+6817fa5c: %s%s%s
+6817fa64: %s%s%s %s%s
+6817fa70: %s%s%s:%s
+6817fa7c: %s%s%c
+6817fa84: #%u=%c
+6817fa8c: 	import %s[%s]
+
+6817fa9c: 	import %s.%s
+
+6817faac: 	import %s.*
+
+6817fabc: 	export %s
+
+6817fac8: 	export *
+
+6817fad4: %s %c%s %s
+6817fae0: %s[%d]
+6817fae8: %s[%s] = %s
+6817faf4: %s%s = %s
+6817fb00: %s %s= %s
+6817fb0c: %s[%s]
+6817fb14: %s[%s] %s= %s
+6817fb24: %s.%s = %s
+6817fb30: %s.%s %s= %s
+6817fb40: %s.%s
+6817fb48: %s[%s]%s
+6817fb54: %s.%s%s
+6817fb5c: %s%s[%s]
+6817fb68: %s%s.%s
+6817fb70: %s %s[%s]
+6817fb7c: %s %s.%s
+6817fb88: %s %s
+6817fb90: %s %s%s
+6817fb98:  in %s) {
+
+6817fbb0: 	for (%s%s
+6817fbbc: %*s%s
+6817fbc4: %s %s
+
+6817fbd0: 	} while (%s);
+
+6817fbe0: %s ? %s : %s
+6817fbf0: 	while (%s) {
+
+6817fc00: 	} else {
+
+6817fc0c: 	if (%s) {
+
+6817fc18: 	break;
+
+6817fc24: 	break %s;
+
+6817fc30: 	continue;
+
+6817fc3c: 	continue %s;
+
+6817fc4c: 	%s %s;
+
+6817fc58: 	with (%s) {
+
+6817fc6c: 	for (%s;
+6817fc78: %s, %s
+6817fc80: 	%s;
+
+6817fc88: 	} finally {
+
+6817fc98: 	try {
+
+6817fcb0: 	} catch (
+6817fcbc: 	%s: {
+
+6817fcc4: 	%s:
+
+6817fccc: 	do {
+
+6817fcdc: %s %s %s
+6817fce8: js_DecompileValueGenerator
+6817fd17: ?fromCharCode
+6817fd2c: blink
+6817fd38: small
+6817fd40: strike
+6817fd48: anchor
+6817fd58: fontcolor
+6817fd64: fontsize
+6817fd70: italics
+6817fd78: split
+6817fd80: search
+6817fd88: match
+6817fd90: localeCompare
+6817fda0: toLocaleUpperCase
+6817fdb4: toLocaleLowerCase
+6817fdc8: lastIndexOf
+6817fdd4: indexOf
+6817fddc: charCodeAt
+6817fde8: charAt
+6817fdf0: toUpperCase
+6817fdfc: toLowerCase
+6817fe08: substring
+6817ff18: escape
+6817ff20: unescape
+6817ff2c: uneval
+6817ff34: decodeURI
+6817ff40: encodeURI
+6817ff4c: decodeURIComponent
+6817ff60: encodeURIComponent
+68182490: 0123456789ABCDEF
+681824c0: font size
+681824cc: font color
+681824d8: a href
+681824e4: a name
+681824ec: PropertyIterator
+68182500: propobj->parent
+6818253c: volatile
+68182548: transient
+68182554: throws
+6818255c: synchronized
+6818256c: public
+68182574: protected
+68182580: private
+68182588: package
+68182590: native
+6818259c: import
+681825a4: implements
+681825b0: final
+681825b8: extends
+681825c0: double
+681825c8: class
+681825d8: abstract
+681825e4: export
+681825ec: break
+681825f4: error line buffer
+681826b8: lcontext_FileRead: symRef=%d index=%d nameStr=%s sym=%d
+681826f0: function...
+68182700: fileOffset + i *fileMethTabEntSize %d
+
+68182728: MCI Error: %ld
+68182738: MCI Error: 
+68188000: Copyright 1989-95 MacroMedia, Inc. All rights reserved.
+6818e7f0: USER DEFINED EXTENSION TYPE
+6818e852: .Class 3 Public Primary Certification Authority
+6818e940: Midetpuc dnsHdnsSdns
+6818ee80: calling co set log function
+6818ee9c: selecting certificate
+6818eeb4: decoding public key
+6818f278: decoding chain certificate public key
+6818f2a0: decoding TLCA public key
+6818f2bc: checking certificate constraint
+6818f2dc: inserting selected certificate
+6818f2fc: verifying certificate signature
+6818f31c: reading chain certificate
+6818f338: reading certificate chain object
+6818f35c: selecting certificate chain
+6818f378: reading certificate list object
+6818f398: decoding CRL entries
+6818f3b0: inserting CRL
+6818f3c0: verifying CRL signature
+6818f3d8: reading CRL
+6818f3e4: selecting CRL
+6818f468: adding certificate to list object
+6818f48c: verifying self-signed cert signature
+6818f4b4: setting self-signed cert public key
+6818f4d8: checking case ignore names
+6818f688: setting public key
+6818f69c: reading DEK Key data
+6818f6b4: reading DEK algorithm ID
+6818f6d0: decoding algorithm ID
+6818f6e8: encoding BER algorithm ID
+6818f704: getting algorithm info by object
+6818f728: setting DES-CBC algorithm
+6818f744: setting RC2-CBC algorithm
+6818f760: setting DES-EDE3-CBC algorithm
+6818f780: setting RC5-CBC algorithm
+6818f79c: getting public key info
+6818f7b4: getting private key info
+6818fc80: processing input text stream
+6818fca0: encoding signer info
+6818fcb8: calling you set add function
+6818fcd8: initializing digest algorithm
+6818fcf8: initializing DEK algorithm
+6818fd14: decoding certificate
+6818fd2c: decoding CRL
+6818fd3c: decoding signer info
+6818fd54: reading digest encryption algorithm
+6818fd78: getting content type attribute
+6818fd98: processing enhanced text stream
+6818fdb8: finalizing enhanced text stream
+6818fde4: decoding digest algorithm
+6818fe00: setting private algorithm
+6818fe1c: setting dek from envelope
+6818fe38: setting DEK algorithm from list
+6818fe58: computing recipient info
+6818fe74: inserting CRL from message
+6818fe90: verifying CRL in message by issuer self-signed cert
+6818fec4: getting crl signature
+6818fedc: getting CRL inner DER
+6818fef4: getting CRL info
+6818ff08: checking status of CRL in message
+6818ff2c: verifying cert in message by issuer self-signed cert
+6818ff64: inserting certificate from message
+6818ff88: getting certificate signature
+6818ffa8: getting certificate info DER
+6818ffc8: getting certificate information
+6818ffe8: selecting certificate status
+68190008: inserting self-signed certificate from message
+68190038: checking self signed certificate
+6819005c: setting cert public key
+68190074: checking certificate using self signed certificate
+681900a8: selecting self signed certificate
+68192b90: message
+68192b98: fileName
+68192ba4: lineNumber
+68192bb0: stack
+68193690: Invalid Date
+68193c3f: hconst
+68193c4c: function
+68193c5c: instanceof
+68193c6c: delete
+68193c74: typeof
+68193c94: false
+ffdff1ac: 
+ffdffc00: 
